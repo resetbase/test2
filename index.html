@@ -158,53 +158,47 @@
         .feature-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--text-dark); }
         .feature-desc { font-size: 13px; line-height: 1.7; color: #555; }
 
-        /* --- 料金プラン用追加・変更CSS --- */
-        .plan-section-title { text-align: center; margin-bottom: 40px; }
+        /* --- 料金プラン（最小化・すっきり版）スタイル --- */
+        .plan-section-title { text-align: center; margin-bottom: 32px; }
         .plan-en-title { font-family: var(--font-en); color: #a4baf3; font-size: 14px; font-weight: 600; display: block; margin-bottom: -2px; }
         .plan-jp-title { font-size: 26px; font-weight: 700; color: var(--plan-blue); position: relative; display: inline-block; z-index: 1; }
         .plan-jp-title::after { content: ""; position: absolute; bottom: 2px; left: -10%; width: 120%; height: 10px; background: #c1d2ff; z-index: -1; }
 
-        .plan-group-title {
-            font-size: 16px; font-weight: 700; color: #111; margin: 40px 0 20px; text-align: center;
-            padding-bottom: 12px; border-bottom: 2px dashed #ccc;
+        .compact-plan-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+        .compact-plan-item {
+            border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;
+            background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            display: flex; flex-direction: column; gap: 12px; position: relative;
         }
-        .plan-group-title span {
-            display: block; font-family: var(--font-en); font-size: 12px; color: var(--primary-bg); letter-spacing: 0.1em; margin-bottom: 4px;
-        }
-        .plan-group-title.main-group span { color: #f59e0b; }
-
-        .img-plan-card { border: 2px solid var(--plan-blue); background: #fff; position: relative; margin-bottom: 40px; }
-        .img-plan-badge { position: absolute; top: -16px; right: -12px; background: var(--plan-yellow); color: #333; font-weight: 700; font-size: 12px; padding: 8px 16px; border-radius: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 2; }
-        .img-plan-header { background-color: var(--plan-blue); background-image: radial-gradient(rgba(255, 255, 255, 0.15) 2px, transparent 2px); background-size: 10px 10px; padding: 24px 16px; text-align: center; color: #fff; }
-        .img-plan-en { font-size: 11px; font-family: var(--font-en); margin-bottom: 6px; letter-spacing: 0.05em;}
-        .img-plan-jp { font-size: 24px; font-weight: 700; }
-        .img-plan-body { padding: 32px 24px 24px; text-align: center; }
-        .img-plan-price-box { display: inline-flex; align-items: baseline; position: relative; margin-bottom: 12px; z-index: 1; }
-        .img-plan-price-box .yen { font-size: 14px; color: var(--plan-blue); font-weight: 700; margin-right: 2px; }
-        .img-plan-price-box .num { font-size: 48px; color: var(--plan-blue); font-family: var(--font-en); font-style: italic; font-weight: 800; line-height: 1; letter-spacing: -0.02em;}
-        .img-plan-price-box .month { font-size: 12px; color: var(--plan-blue); font-weight: 700; margin-left: 2px; }
-        .img-plan-price-box::after { content: ""; position: absolute; bottom: 6px; left: 0; width: 100%; height: 6px; background: var(--plan-yellow); z-index: -1; }
+        .compact-plan-item.hook-plan { border-left: 4px solid #94a3b8; } /* ライト・スタンダード */
+        .compact-plan-item.main-plan { border: 1.5px solid var(--plan-blue); background: #fdfeff; } /* メインプラン */
         
-        .plan-point-info { font-size: 12px; color: #555; background: #f2f5ff; display: inline-block; padding: 4px 12px; border-radius: 12px; margin-bottom: 20px; font-weight: 500; }
-        .plan-point-info strong { color: var(--plan-blue); font-size: 14px; }
+        .compact-plan-badge {
+            position: absolute; top: -10px; right: 12px; background: var(--plan-yellow);
+            color: #333; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
         
-        .img-plan-hr { border: none; border-top: 2px dotted #e0e0e0; margin: 0 0 24px 0; }
-        .img-plan-row { display: flex; align-items: flex-start; margin-bottom: 16px; text-align: left; }
-        .img-plan-label { background: var(--plan-blue); color: #fff; font-size: 12px; font-weight: 700; padding: 8px 0; width: 60px; text-align: center; flex-shrink: 0; margin-right: 16px; }
-        .img-plan-desc { font-size: 12px; color: var(--plan-blue); line-height: 1.6; font-weight: 500; margin-top: 6px;}
+        .compact-plan-info { display: flex; justify-content: space-between; align-items: center; }
+        .compact-plan-name { font-size: 16px; font-weight: 700; color: #111; }
+        .compact-plan-price { font-family: var(--font-en); font-size: 18px; font-weight: 800; color: var(--plan-blue); }
+        .compact-plan-price span { font-size: 11px; color: #666; font-weight: 500; font-family: var(--font-jp); margin-left: 2px; }
 
-        .btn-plan-buy {
-            display: block; width: 100%; text-align: center; padding: 14px; margin-top: 20px;
-            background: var(--plan-blue); color: #fff; font-size: 14px; font-weight: 700;
-            border-radius: 6px; text-decoration: none; box-shadow: 0 4px 10px rgba(43, 95, 232, 0.2); transition: 0.2s;
+        .compact-plan-actions { display: flex; gap: 10px; align-items: center; }
+        .btn-compact-buy {
+            flex: 1; text-align: center; padding: 10px; background: var(--plan-blue);
+            color: #fff; font-size: 13px; font-weight: 700; border-radius: 6px; text-decoration: none;
+            box-shadow: 0 3px 8px rgba(43, 95, 232, 0.2); transition: 0.2s;
         }
-        .btn-plan-buy:hover { background: #1a49b8; }
+        .btn-compact-buy:hover { background: #1a49b8; }
+        .compact-plan-item.hook-plan .btn-compact-buy { background: #475569; box-shadow: 0 3px 8px rgba(71, 85, 105, 0.2); }
 
-        .btn-compare-trigger {
-            display: flex; justify-content: center; align-items: center; gap: 8px;
-            background: #333; color: #fff; padding: 16px; border-radius: 6px; text-decoration: none;
-            font-weight: 700; font-size: 14px; margin: 40px 0 20px; cursor: pointer; border: none; width: 100%;
+        .btn-plan-detail-trigger {
+            background: none; border: 1px solid #cbd5e1; color: #475569;
+            font-size: 12px; font-weight: 600; padding: 9px 12px; border-radius: 6px;
+            cursor: pointer; display: flex; align-items: center; gap: 4px; white-space: nowrap;
         }
+        .btn-plan-detail-trigger:hover { background: #f8fafc; }
 
         /* モーダル表示用スタイル */
         .modal-overlay {
@@ -223,6 +217,7 @@
         .modal-close { background: none; border: none; font-size: 24px; color: #999; cursor: pointer; }
         .modal-body { padding: 0; overflow: hidden; flex: 1; }
         .table-scroll-wrap { width: 100%; height: 100%; overflow-x: auto; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+        
         .compare-table { width: max-content; min-width: 100%; border-collapse: collapse; font-size: 12px; }
         .compare-table th, .compare-table td { padding: 12px 14px; border: 1px solid #eee; text-align: center; }
         .compare-table th { background: var(--plan-blue); color: #fff; font-weight: 700; position: sticky; top: 0; z-index: 1; white-space: nowrap; }
@@ -259,11 +254,7 @@
         .footer-links a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
         .footer-copy { font-size: 11px; opacity: 0.9; font-weight: 400; }
 
-        /* ==========================================
-            ▼ パートナー（B2B）専用ページ
-           ========================================== */
         #view-partner { display: none; background-color: #fff; position: relative; width: 100%; } 
-        
         .p-header {
             display: flex; align-items: center; justify-content: space-between;
             padding: 16px 20px; background: #fff; border-bottom: 1px solid #eaeaea;
@@ -467,153 +458,75 @@
                                 <h2 class="plan-jp-title">料金プラン</h2>
                             </div>
 
-                            <h3 class="plan-group-title"><span>Step 1</span>まずは習慣化から（整体メイン）</h3>
-
-                            <div class="img-plan-card">
-                                <div class="img-plan-header">
-                                    <div class="img-plan-en">Light Plan</div>
-                                    <div class="img-plan-jp">ライト</div>
+                            <div class="compact-plan-list">
+                                <div class="compact-plan-item hook-plan">
+                                    <div class="compact-plan-info">
+                                        <div class="compact-plan-name">ライト</div>
+                                        <div class="compact-plan-price">¥6,600<span>/月(税込)</span></div>
+                                    </div>
+                                    <div class="compact-plan-actions">
+                                        <button class="btn-plan-detail-trigger js-modal-open-btn"><i class="fa-solid fa-circle-info"></i> 詳細</button>
+                                        <a href="https://square.link/u/nSGGJbPy" class="btn-compact-buy" target="_blank">申し込む</a>
+                                    </div>
                                 </div>
-                                <div class="img-plan-body">
-                                    <div class="img-plan-price-box">
-                                        <span class="yen">¥</span><span class="num">6,600</span><span class="month">/月(税込)</span>
+
+                                <div class="compact-plan-item hook-plan">
+                                    <div class="compact-plan-badge">まずはここから！</div>
+                                    <div class="compact-plan-info">
+                                        <div class="compact-plan-name">スタンダード</div>
+                                        <div class="compact-plan-price">¥13,200<span>/月(税込)</span></div>
                                     </div>
-                                    <div class="plan-point-info">毎月 <strong>30pt</strong> 付与（単価100円）</div>
-                                    <hr class="img-plan-hr">
-                                    <div class="img-plan-row">
-                                        <div class="img-plan-label">内容</div>
-                                        <div class="img-plan-desc">月2回の30分メンテ</div>
+                                    <div class="compact-plan-actions">
+                                        <button class="btn-plan-detail-trigger js-modal-open-btn"><i class="fa-solid fa-circle-info"></i> 詳細</button>
+                                        <a href="https://square.link/u/CkJbZbMg" class="btn-compact-buy" target="_blank">申し込む</a>
                                     </div>
-                                    <div class="img-plan-row">
-                                        <div class="img-plan-label">特権</div>
-                                        <div class="img-plan-desc">基本サービス利用可能</div>
+                                </div>
+
+                                <div class="compact-plan-item main-plan">
+                                    <div class="compact-plan-badge">おすすめ！</div>
+                                    <div class="compact-plan-info">
+                                        <div class="compact-plan-name">プレミアム</div>
+                                        <div class="compact-plan-price">¥22,000<span>/月(税込)</span></div>
                                     </div>
-                                    <a href="https://square.link/u/nSGGJbPy" class="btn-plan-buy" target="_blank">このプランで申し込む</a>
+                                    <div class="compact-plan-actions">
+                                        <button class="btn-plan-detail-trigger js-modal-open-btn"><i class="fa-solid fa-circle-info"></i> 詳細</button>
+                                        <a href="https://square.link/u/tQImQzYW" class="btn-compact-buy" target="_blank">申し込む</a>
+                                    </div>
+                                </div>
+
+                                <div class="compact-plan-item main-plan">
+                                    <div class="compact-plan-info">
+                                        <div class="compact-plan-name">エキスパート伴走</div>
+                                        <div class="compact-plan-price">¥33,000<span>/月(税込)</span></div>
+                                    </div>
+                                    <div class="compact-plan-actions">
+                                        <button class="btn-plan-detail-trigger js-modal-open-btn"><i class="fa-solid fa-circle-info"></i> 詳細</button>
+                                        <a href="https://square.link/u/1PTExaa2" class="btn-compact-buy" target="_blank">申し込む</a>
+                                    </div>
+                                </div>
+
+                                <div class="compact-plan-item main-plan">
+                                    <div class="compact-plan-info">
+                                        <div class="compact-plan-name">トータルケアVIP</div>
+                                        <div class="compact-plan-price">¥55,000<span>/月(税込)</span></div>
+                                    </div>
+                                    <div class="compact-plan-actions">
+                                        <button class="btn-plan-detail-trigger js-modal-open-btn"><i class="fa-solid fa-circle-info"></i> 詳細</button>
+                                        <a href="https://square.link/u/KoqDEs10" class="btn-compact-buy" target="_blank">申し込む</a>
+                                    </div>
+                                </div>
+
+                                <div class="compact-plan-item">
+                                    <div class="compact-plan-info">
+                                        <div class="compact-plan-name">プラチナ・ファミリー</div>
+                                        <div class="compact-plan-price">¥110,000<span>/月(税込)</span></div>
+                                    </div>
+                                    <div class="compact-plan-actions">
+                                        <button class="btn-plan-detail-trigger js-modal-open-btn"><i class="fa-solid fa-circle-info"></i> 詳細</button>
+                                        <a href="https://square.link/u/MrAgxAcG" class="btn-compact-buy" target="_blank">申し込む</a>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="img-plan-card">
-                                <div class="img-plan-badge">習慣化へのフックプラン！</div>
-                                <div class="img-plan-header">
-                                    <div class="img-plan-en">Standard Plan</div>
-                                    <div class="img-plan-jp">スタンダード</div>
-                                </div>
-                                <div class="img-plan-body">
-                                    <div class="img-plan-price-box">
-                                        <span class="yen">¥</span><span class="num">13,200</span><span class="month">/月(税込)</span>
-                                    </div>
-                                    <div class="plan-point-info">毎月 <strong>60pt</strong> 付与（単価100円）</div>
-                                    <hr class="img-plan-hr">
-                                    <div class="img-plan-row">
-                                        <div class="img-plan-label">内容</div>
-                                        <div class="img-plan-desc">月2回の整体・基本習慣化</div>
-                                    </div>
-                                    <div class="img-plan-row">
-                                        <div class="img-plan-label">特権</div>
-                                        <div class="img-plan-desc">継続3ヶ月で限定サプリ進呈</div>
-                                    </div>
-                                    <a href="https://square.link/u/CkJbZbMg" class="btn-plan-buy" target="_blank">このプランで申し込む</a>
-                                </div>
-                            </div>
-
-                            <h3 class="plan-group-title main-group"><span>Step 2</span>RESET BASE メインサブスクプラン</h3>
-
-                            <div class="img-plan-card">
-                                <div class="img-plan-badge">専門家相談メニュー全解放</div>
-                                <div class="img-plan-header">
-                                    <div class="img-plan-en">Premium Plan</div>
-                                    <div class="img-plan-jp">プレミアム</div>
-                                </div>
-                                <div class="img-plan-body">
-                                    <div class="img-plan-price-box">
-                                        <span class="yen">¥</span><span class="num">22,000</span><span class="month">/月(税込)</span>
-                                    </div>
-                                    <div class="plan-point-info">毎月 <strong>115pt</strong> 付与（単価97.7円）</div>
-                                    <hr class="img-plan-hr">
-                                    <div class="img-plan-row">
-                                        <div class="img-plan-label">内容</div>
-                                        <div class="img-plan-desc">週1回の整体・専門家相談</div>
-                                    </div>
-                                    <div class="img-plan-row">
-                                        <div class="img-plan-label">特権</div>
-                                        <div class="img-plan-desc">専門家単発相談メニューの全解放</div>
-                                    </div>
-                                    <a href="https://square.link/u/tQImQzYW" class="btn-plan-buy" target="_blank">このプランで申し込む</a>
-                                </div>
-                            </div>
-
-                            <div class="img-plan-card">
-                                <div class="img-plan-header">
-                                    <div class="img-plan-en">Expert Support Plan</div>
-                                    <div class="img-plan-jp">エキスパート伴走プラン</div>
-                                </div>
-                                <div class="img-plan-body">
-                                    <div class="img-plan-price-box">
-                                        <span class="yen">¥</span><span class="num">33,000</span><span class="month">/月(税込)</span>
-                                    </div>
-                                    <div class="plan-point-info">毎月 <strong>170pt</strong> 付与（単価97.0円）</div>
-                                    <hr class="img-plan-hr">
-                                    <div class="img-plan-row">
-                                        <div class="img-plan-label">内容</div>
-                                        <div class="img-plan-desc">身体の根本改善・伴走希望者</div>
-                                    </div>
-                                    <div class="img-plan-row">
-                                        <div class="img-plan-label">特権</div>
-                                        <div class="img-plan-desc">【特権】月間伴走サポート（管理栄養士等）の予約権</div>
-                                    </div>
-                                    <a href="https://square.link/u/1PTExaa2" class="btn-plan-buy" target="_blank">このプランで申し込む</a>
-                                </div>
-                            </div>
-
-                            <div class="img-plan-card">
-                                <div class="img-plan-header">
-                                    <div class="img-plan-en">Total Care VIP</div>
-                                    <div class="img-plan-jp">トータルケアVIP</div>
-                                </div>
-                                <div class="img-plan-body">
-                                    <div class="img-plan-price-box">
-                                        <span class="yen">¥</span><span class="num">55,000</span><span class="month">/月(税込)</span>
-                                    </div>
-                                    <div class="plan-point-info">毎月 <strong>285pt</strong> 付与（単価96.4円）</div>
-                                    <hr class="img-plan-hr">
-                                    <div class="img-plan-row">
-                                        <div class="img-plan-label">内容</div>
-                                        <div class="img-plan-desc">徹底的な身体改革・多忙な方</div>
-                                    </div>
-                                    <div class="img-plan-row">
-                                        <div class="img-plan-label">特権</div>
-                                        <div class="img-plan-desc">【特権】土日優先予約枠・営業時間外対応の権利</div>
-                                    </div>
-                                    <a href="https://square.link/u/KoqDEs10" class="btn-plan-buy" target="_blank">このプランで申し込む</a>
-                                </div>
-                            </div>
-
-                            <div class="img-plan-card">
-                                <div class="img-plan-header">
-                                    <div class="img-plan-en">Platinum Family</div>
-                                    <div class="img-plan-jp">プラチナ・ファミリー</div>
-                                </div>
-                                <div class="img-plan-body">
-                                    <div class="img-plan-price-box">
-                                        <span class="yen">¥</span><span class="num">110,000</span><span class="month">/月(税込)</span>
-                                    </div>
-                                    <div class="plan-point-info">毎月 <strong>575pt</strong> 付与（単価95.6円）</div>
-                                    <hr class="img-plan-hr">
-                                    <div class="img-plan-row">
-                                        <div class="img-plan-label">内容</div>
-                                        <div class="img-plan-desc">家族・社員共有・経営者向け</div>
-                                    </div>
-                                    <div class="img-plan-row">
-                                        <div class="img-plan-label">特権</div>
-                                        <div class="img-plan-desc">【特権】ポイント譲渡・共有権、専用コンシェルジュ付帯</div>
-                                    </div>
-                                    <a href="https://square.link/u/MrAgxAcG" class="btn-plan-buy" target="_blank">このプランで申し込む</a>
-                                </div>
-                            </div>
-
-                            <button id="js-open-compare" class="btn-compare-trigger">
-                                <i class="fa-solid fa-table-list"></i> 各プランの機能比較表を見る
-                            </button>
                         </section>
                         <section class="section bg-light" id="faq">
                             <div class="sec-title-wrap">
@@ -806,7 +719,7 @@
     <div class="modal-overlay" id="compare-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>サブスクプラン機能比較表</h3>
+                <h3>サブスクプラン詳細比較</h3>
                 <button class="modal-close" id="js-close-compare">&times;</button>
             </div>
             <div class="modal-body">
@@ -832,6 +745,42 @@
                                 <td>33,000円</td>
                                 <td>55,000円</td>
                                 <td>110,000円</td>
+                            </tr>
+                            <tr>
+                                <td>付与ポイント</td>
+                                <td>30 pt</td>
+                                <td>60 pt</td>
+                                <td>115 pt</td>
+                                <td>170 pt</td>
+                                <td>285 pt</td>
+                                <td>575 pt</td>
+                            </tr>
+                            <tr>
+                                <td>ポイント単価</td>
+                                <td>100円</td>
+                                <td>100円</td>
+                                <td>97.7円</td>
+                                <td>97.0円</td>
+                                <td>96.4円</td>
+                                <td>95.6円</td>
+                            </tr>
+                            <tr>
+                                <td>主な対象・利用シーン</td>
+                                <td>月2回の30分メンテ</td>
+                                <td>月2回の整体・基本習慣化</td>
+                                <td>週1回の整体・専門家相談</td>
+                                <td>身体の根本改善・伴走希望者</td>
+                                <td>徹底的な身体改革・多忙な方</td>
+                                <td>家族・社員共有・経営者向け</td>
+                            </tr>
+                            <tr>
+                                <td>特権・備考</td>
+                                <td>基本サービス利用可能</td>
+                                <td>継続3ヶ月で限定サプリ進呈</td>
+                                <td>専門家単発相談メニューの全解放</td>
+                                <td>月間伴走サポート（管理栄養士等）の予約権</td>
+                                <td>土日優先予約枠・営業時間外対応の権利</td>
+                                <td>ポイント譲渡・共有権、専用コンシェルジュ付帯</td>
                             </tr>
                             <tr>
                                 <td>整体・ボディケア利用</td>
@@ -1094,16 +1043,19 @@
                 if (isMobile()) { document.querySelectorAll('.expert').forEach(exp => exp.classList.remove('active', 'out')); }
             });
 
-            // --- モーダル表示制御用追加コード ---
-            const btnOpenCompare = document.getElementById('js-open-compare');
+            // --- 全詳細ボタン、およびモーダル制御用コード ---
+            const modalOpenBtns = document.querySelectorAll('.js-modal-open-btn');
             const btnCloseCompare = document.getElementById('js-close-compare');
             const compareModal = document.getElementById('compare-modal');
 
-            if(btnOpenCompare && compareModal) {
-                btnOpenCompare.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    compareModal.classList.add('show');
+            if(modalOpenBtns.length > 0 && compareModal) {
+                modalOpenBtns.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        compareModal.classList.add('show');
+                    });
                 });
+                
                 btnCloseCompare.addEventListener('click', () => {
                     compareModal.classList.remove('show');
                 });
