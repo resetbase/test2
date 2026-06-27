@@ -87,6 +87,7 @@
 
         .experts-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
         .expert { position: absolute; display: flex; align-items: center; justify-content: center; transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease; opacity: 0; transform: translate(0, 0) scale(0.5); width: 280px; pointer-events: none; }
+        .expert.active.out { opacity: 0; transform: scale(0.5) !important; transition: all 0.4s ease-out !important; }
         .expert img { width: 100%; height: auto; object-fit: contain; -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); }
         .expert.right { top: 40%; right: 10px; transform-origin: bottom left; }
         .expert.right.active { opacity: 1; transform: translate(60%, -10%) scale(1.1) rotate(25deg); }
@@ -157,56 +158,56 @@
         .feature-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--text-dark); }
         .feature-desc { font-size: 13px; line-height: 1.7; color: #555; }
 
-        /* --- 料金プラン（ライフステージ版・フラニスタ風） --- */
+        /* --- 新・料金プラン用追加CSS（ライフステージ・フラニスタ風） --- */
         .plan-section-title { text-align: center; margin-bottom: 12px; }
-        .plan-jp-title { font-size: 28px; font-weight: 900; color: #111; letter-spacing: 0.05em; }
-        .plan-sub-text { font-size: 13px; color: #666; text-align: center; margin-bottom: 32px; line-height: 1.6; }
+        .plan-en-title { font-family: var(--font-en); color: #a4baf3; font-size: 14px; font-weight: 600; display: block; margin-bottom: -2px; }
+        .plan-jp-title { font-size: 26px; font-weight: 700; color: var(--plan-blue); position: relative; display: inline-block; z-index: 1; }
+        .plan-jp-title::after { content: ""; position: absolute; bottom: 2px; left: -10%; width: 120%; height: 10px; background: #c1d2ff; z-index: -1; }
 
-        .stage-box { margin-bottom: 40px; }
+        .stage-box { margin-bottom: 32px; text-align: left; }
         .stage-header { 
-            background: #333; color: #fff; display: inline-block; padding: 6px 16px; 
-            font-size: 12px; font-weight: 700; border-radius: 20px; margin-bottom: 16px;
+            background: #333; color: #fff; display: inline-block; padding: 6px 14px; 
+            font-size: 11px; font-weight: 700; border-radius: 20px; margin-bottom: 12px; letter-spacing: 0.05em;
         }
-        .stage-desc { font-size: 16px; font-weight: 800; color: var(--plan-blue); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-        .stage-desc i { font-size: 18px; }
+        .stage-desc { font-size: 15px; font-weight: 800; color: var(--plan-blue); margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
+        .stage-desc i { font-size: 16px; }
 
         .fl-plan-card {
             background: #fff; border: 2px solid #111; border-radius: 12px; 
-            padding: 24px 20px; margin-bottom: 16px; position: relative;
-            box-shadow: 4px 4px 0px #111;
+            padding: 20px 16px; margin-bottom: 14px; position: relative;
+            box-shadow: 4px 4px 0px #111; text-align: left;
         }
         .fl-plan-badge {
-            position: absolute; top: -10px; left: 16px; background: var(--plan-yellow);
-            color: #111; font-size: 10px; font-weight: 800; padding: 2px 10px; border: 2px solid #111; border-radius: 4px;
+            position: absolute; top: -10px; left: 14px; background: var(--plan-yellow);
+            color: #111; font-size: 10px; font-weight: 800; padding: 2px 8px; border: 2px solid #111; border-radius: 4px; z-index: 2;
         }
-        .fl-plan-top { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 16px; }
-        .fl-plan-name { font-size: 18px; font-weight: 900; color: #111; }
-        .fl-plan-price { font-family: var(--font-en); font-size: 26px; font-weight: 900; color: #111; }
-        .fl-plan-price span { font-size: 12px; font-family: var(--font-jp); font-weight: 700; margin-left: 2px; }
+        .fl-plan-top { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 10px; }
+        .fl-plan-name { font-size: 16px; font-weight: 900; color: #111; }
+        .fl-plan-price { font-family: var(--font-en); font-size: 24px; font-weight: 900; color: #111; font-style: italic; line-height: 1; }
+        .fl-plan-price span { font-size: 11px; font-family: var(--font-jp); font-weight: 700; margin-left: 2px; font-style: normal; }
         
-        .fl-plan-dashed { border-top: 2px dashed #ddd; margin: 16px 0; }
-        
-        .fl-plan-target { font-size: 12px; color: #555; font-weight: 700; margin-bottom: 12px; line-height: 1.4; }
-        .fl-plan-target i { color: var(--plan-blue); margin-right: 4px; }
+        .fl-plan-target { font-size: 12px; color: #555; font-weight: 600; margin-bottom: 14px; line-height: 1.4; display: flex; align-items: flex-start; gap: 4px; }
+        .fl-plan-target i { color: var(--plan-blue); margin-top: 2px; }
 
-        .fl-plan-footer { display: flex; gap: 10px; }
+        .fl-plan-footer { display: flex; gap: 8px; }
         .btn-fl-detail {
             flex: 1; background: #fff; border: 2px solid #111; color: #111; 
-            font-size: 13px; font-weight: 800; padding: 12px; border-radius: 8px; cursor: pointer;
+            font-size: 12px; font-weight: 800; padding: 10px; border-radius: 6px; cursor: pointer;
             display: flex; align-items: center; justify-content: center; gap: 4px;
         }
         .btn-fl-apply {
             flex: 1.5; background: #00c853; border: 2px solid #111; color: #fff; 
-            font-size: 14px; font-weight: 900; padding: 12px; border-radius: 8px; text-decoration: none;
-            display: flex; align-items: center; justify-content: center; gap: 6px;
-            box-shadow: 0 4px 0px #007b33; transition: transform 0.1s;
+            font-size: 13px; font-weight: 900; padding: 10px; border-radius: 6px; text-decoration: none;
+            display: flex; align-items: center; justify-content: center; gap: 4px;
+            box-shadow: 0 3px 0px #007b33; transition: transform 0.1s, box-shadow 0.1s;
+            text-align: center;
         }
-        .btn-fl-apply:active { transform: translateY(2px); box-shadow: 0 2px 0px #007b33; }
+        .btn-fl-apply:active { transform: translateY(2px); box-shadow: 0 1px 0px #007b33; }
 
         .btn-compare-all {
-            width: 100%; background: #f8f9fa; border: 2px solid #111; padding: 16px;
-            font-size: 14px; font-weight: 800; border-radius: 12px; margin-top: 20px;
-            display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer;
+            width: 100%; background: #f8f9fa; border: 2px solid #111; padding: 14px;
+            font-size: 13px; font-weight: 800; border-radius: 10px; margin-top: 10px;
+            display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; box-shadow: 3px 3px 0px #111;
         }
 
         /* モーダル表示用スタイル */
@@ -224,27 +225,112 @@
         }
         .modal-header { padding: 16px 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; background: #f8f9fa; }
         .modal-header h3 { font-size: 15px; font-weight: 900; margin: 0; }
-        .modal-close { background: none; border: none; font-size: 24px; color: #111; cursor: pointer; font-weight: 900; }
+        .modal-close { background: none; border: none; font-size: 24px; color: #111; cursor: pointer; font-weight: 900; line-height: 1; padding: 4px; }
         .modal-body { padding: 0; overflow: hidden; flex: 1; }
         .table-scroll-wrap { width: 100%; height: 100%; overflow-x: auto; overflow-y: auto; -webkit-overflow-scrolling: touch; }
         
         .compare-table { width: max-content; min-width: 100%; border-collapse: collapse; font-size: 12px; }
-        .compare-table th, .compare-table td { padding: 14px; border: 1px solid #eee; text-align: center; }
+        .compare-table th, .compare-table td { padding: 12px 14px; border: 1px solid #eee; text-align: center; }
         .compare-table th { background: #333; color: #fff; font-weight: 700; position: sticky; top: 0; z-index: 1; white-space: nowrap; }
         .compare-table th:first-child, .compare-table td:first-child {
             position: sticky; left: 0; background: #f8f9fa; color: #333; font-weight: 900;
             text-align: left; z-index: 2; border-right: 2px solid #111; white-space: nowrap;
         }
+        .compare-table th:first-child { z-index: 3; background: #1a49b8; color: #fff; }
         .compare-table td .circle { color: var(--plan-blue); font-weight: 900; font-size: 16px; }
         .compare-table td .dash { color: #ccc; }
 
-        /* FAQ */
-        .faq-item { border: 2px solid #111; border-radius: 8px; margin-bottom: 12px; overflow: hidden; box-shadow: 3px 3px 0 #111; }
-        .faq-q { background: #fff; padding: 16px; font-weight: 900; font-size: 13px; color: #111; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-        .faq-q::after { content: '＋'; font-size: 16px; }
-        .faq-a { padding: 16px; font-size: 13px; line-height: 1.6; color: #444; border-top: 1px solid #eee; display: none; background: #fafafa; }
+        .faq-item { border: 1px solid #eee; border-radius: 6px; margin-bottom: 12px; }
+        .faq-q { background: #f9f9f9; padding: 14px 16px; font-weight: 700; font-size: 13px; color: var(--text-dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-q::after { content: '＋'; font-size: 12px; color: var(--primary-bg); }
+        .faq-a { padding: 14px 16px; font-size: 13px; line-height: 1.6; color: #555; border-top: 1px solid #eee; display: none; background: #fff; }
         .faq-item.open .faq-a { display: block; }
         .faq-item.open .faq-q::after { content: 'ー'; }
+
+        .maps-btn { display: flex; justify-content: center; align-items: center; background: var(--primary-bg); color: #fff; text-decoration: none; padding: 12px; border-radius: 6px; font-weight: 700; font-size: 14px; margin-top: 16px; }
+
+        .line-section { background: #f4f7fc; padding: 60px 20px; text-align: center; }
+        .line-wrap { border: 2px solid #06C755; border-radius: 12px; padding: 40px 24px; background: #fff; box-shadow: 0 10px 30px rgba(6,199,85,0.08); }
+        .line-title { font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 24px; line-height: 1.5; }
+        .qr-code { width: 140px; height: 140px; margin: 0 auto 24px; }
+        .qr-code img { width: 100%; height: 100%; display: block; }
+        .line-btn-large { display: flex; align-items: center; justify-content: center; background: #06C755; color: #fff; font-size: 16px; font-weight: 700; padding: 18px; border-radius: 8px; text-decoration: none; box-shadow: 0 6px 15px rgba(6, 199, 85, 0.3); }
+        
+        .footer { background-color: var(--primary-bg); background-image: radial-gradient(rgba(255, 255, 255, 0.15) 2px, transparent 2px); background-size: 10px 10px; padding: 50px 24px 30px; text-align: center; color: #fff; width: 100%; }
+        .footer-logo { font-size: 32px; font-weight: 900; font-family: var(--font-en); font-style: italic; margin-bottom: 4px; line-height: 1; }
+        .footer-sub { font-size: 10px; font-weight: 400; letter-spacing: 0.1em; margin-bottom: 32px; opacity: 0.9; }
+        .footer-sns { display: flex; justify-content: center; gap: 24px; margin-bottom: 32px; }
+        .footer-sns a { color: #fff; font-size: 28px; text-decoration: none; transition: opacity 0.3s; }
+        .footer-links { display: flex; justify-content: center; gap: 16px; font-size: 11px; margin-bottom: 24px; flex-wrap: wrap; }
+        .footer-links a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+        .footer-copy { font-size: 11px; opacity: 0.9; font-weight: 400; }
+
+        /* ==========================================
+            ▼ パートナー（B2B）専用ページ
+           ========================================== */
+        #view-partner { display: none; background-color: #fff; position: relative; width: 100%; } 
+        
+        .p-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 16px 20px; background: #fff; border-bottom: 1px solid #eaeaea;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .btn-back-main { display: flex; align-items: center; gap: 4px; color: #555; text-decoration: none; font-size: 13px; font-weight: 700; }
+        .btn-back-main i { font-size: 16px; color: var(--primary-bg); }
+        .p-header-logo { font-size: 16px; font-weight: 900; font-family: var(--font-en); font-style: italic; color: var(--primary-bg); text-align: right; line-height: 1.1;}
+        .p-header-logo span { display: block; font-size: 8px; font-weight: 600; color: #888; font-style: normal; letter-spacing: 0.05em;}
+
+        .p-hero {
+            background: url('https://images.unsplash.com/photo-1556761175-5973dc0f32b7?auto=format&fit=crop&w=800&q=80') center/cover;
+            height: 380px; position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; text-align: center;
+        }
+        .p-hero::after { content: ""; position: absolute; inset: 0; background: rgba(0, 30, 80, 0.7); z-index: 1; }
+        .p-hero-content { position: relative; z-index: 2; color: #fff; width: 100%; }
+        .p-hero-content h2 { font-size: 24px; font-weight: 800; line-height: 1.4; margin-bottom: 16px; }
+
+        .p-cv-ribbon { background: var(--primary-bg); padding: 20px; text-align: center; }
+        .btn-p-contact {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            background: #fff; color: var(--primary-bg); font-size: 14px; font-weight: 700;
+            padding: 16px 24px; border-radius: 8px; text-decoration: none; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .p-sec { padding: 60px 20px; }
+        .p-sec.bg-gray { background: var(--partner-gray); }
+        .p-sec-ttl { text-align: center; margin-bottom: 40px; }
+        .p-sec-ttl .en { display: block; font-family: var(--font-en); font-size: 28px; font-weight: 900; color: var(--primary-bg); letter-spacing: 0.1em; line-height: 1.2; text-transform: uppercase; }
+        .p-sec-ttl .jp { display: block; font-size: 15px; font-weight: 700; color: var(--text-dark); margin-top: 4px; }
+
+        .p-about-img { width: 100%; border-radius: 8px; margin-bottom: 24px; }
+        .p-about-ttl { font-size: 18px; font-weight: 700; line-height: 1.4; margin-bottom: 16px; color: #111; text-align: center; border-bottom: 2px solid var(--primary-bg); padding-bottom: 16px;}
+        .p-about-txt { font-size: 14px; line-height: 1.8; color: #444; }
+
+        .p-benefit-card { background: #fff; border-radius: 8px; overflow: hidden; margin-bottom: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .p-benefit-img { width: 100%; height: 160px; object-fit: cover; }
+        .p-benefit-body { padding: 20px; }
+        .p-benefit-tag { display: inline-block; border: 1px solid var(--primary-bg); color: var(--primary-bg); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 4px; margin-bottom: 10px; }
+        .p-benefit-ttl { font-size: 16px; font-weight: 700; color: #111; margin-bottom: 10px; line-height: 1.4; }
+        .p-benefit-txt { font-size: 13px; line-height: 1.6; color: #555; }
+
+        .p-menu-grid { display: flex; flex-direction: column; gap: 24px; }
+        .p-menu-card { background: #fff; border: 1px solid #eee; border-radius: 8px; overflow: hidden; }
+        .p-menu-card img { width: 100%; height: 160px; object-fit: cover; }
+        .p-menu-card-body { padding: 20px; }
+        .p-menu-card-body h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--primary-bg); }
+        .p-menu-card-body p { font-size: 13px; color: #555; line-height: 1.6; }
+
+        .p-data-box { background: var(--primary-bg); padding: 40px 20px; border-radius: 12px; color: #fff; text-align: center; margin-bottom: 20px; box-shadow: inset 0 0 20px rgba(0,0,0,0.1); }
+        .p-data-num { font-family: var(--font-en); font-size: 48px; font-weight: 900; font-style: italic; margin: 10px 0; line-height: 1; }
+        .p-data-num span { font-size: 16px; font-style: normal; font-weight: 600; margin-left: 4px; }
+        .p-data-desc { font-size: 13px; opacity: 0.9; }
+
+        .p-partner-logo-item { 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; 
+            padding: 30px 20px; background: #fff; border: 1px solid #eaeaea; border-radius: 8px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02); margin: 0 auto; max-width: 280px; 
+        }
+        .p-partner-logo-item img { width: 100%; max-height: 60px; object-fit: contain; }
+        .p-partner-name { font-size: 13px; font-weight: 700; color: #333; letter-spacing: 0.05em; margin-bottom: 0;}
 
         @media (max-width: 768px) {
             html, body { height: auto; overflow: auto; background-color: #fff; background-image: none; }
@@ -252,13 +338,26 @@
             .layout-wrapper { display: block; height: auto; }
             .desktop-sidebar, .top-left-logo, .bg-watermark, .experts-layer { display: none !important; }
             .preview-area { width: 100%; height: auto; }
+            
             .phone-container-wrapper { position: relative; top: 0; left: 0; width: 100%; height: auto; transform: none; max-height: none; }
             .phone-mockup { border: none; border-radius: 0; box-shadow: none; height: auto; overflow: visible; }
-            .lp-header { position: sticky; top: 0; z-index: 100; }
+            .lp-header, .p-header { position: sticky; top: 0; z-index: 100; }
         }
     </style>
 </head>
 <body>
+
+    <div class="bg-watermark">
+        <div class="marquee-content">
+            <span>RESET BASE RESET BASE RESET BASE</span>
+            <span>RESET BASE RESET BASE RESET BASE</span>
+        </div>
+    </div>
+
+    <div class="top-left-logo">
+        <h1>RESET<span>BASE</span></h1>
+        <p>すべての人に、専属チームを</p>
+    </div>
 
     <div class="layout-wrapper">
         <aside class="desktop-sidebar">
@@ -279,21 +378,103 @@
 
         <main class="preview-area">
             <div class="phone-container-wrapper">
+                
+                <div class="experts-layer">
+                    <div class="expert group1 left"><img src="https://i.imgur.com/3NXwzm5.png" alt=""></div>
+                    <div class="expert group1 right"><img src="https://i.imgur.com/A0H5v7d.png" alt=""></div>
+                    <div class="expert group2 left"><img src="https://i.imgur.com/UgGJfK1.png" alt=""></div>
+                    <div class="expert group2 right"><img src="https://i.imgur.com/GcKwfCS.png" alt=""></div>
+                </div>
+
                 <div class="phone-mockup" id="phone-mockup-scroll">
                     
+                    <div class="mobile-menu" id="js-mobile-menu">
+                        <ul class="mobile-nav-list">
+                            <li><a href="#about" class="m-nav-link">RESET BASEとは</a></li>
+                            <li><a href="#feature" class="m-nav-link">特徴</a></li>
+                            <li><a href="#plan" class="m-nav-link">料金プラン</a></li>
+                            <li><a href="#faq" class="m-nav-link">よくあるご質問</a></li>
+                            <li><a href="#access" class="m-nav-link">アクセス</a></li>
+                            <li><a href="#contact" class="m-nav-link">お問い合わせ</a></li>
+                        </ul>
+                        <a href="#" id="m-btn-show-partner" class="btn-sidebar-partner" style="margin-top: 24px; border-color: var(--primary-bg);">
+                            <i class="fa-solid fa-handshake"></i> パートナー募集
+                        </a>
+                    </div>
+
                     <div id="view-main">
                         <header class="lp-header">
-                            <div class="lp-logo">RESET BASE<span>すべての人に、専属チームを</span></div>
+                            <div class="lp-logo">
+                                RESET BASE
+                                <span>すべての人に、専属チームを</span>
+                            </div>
                             <div class="header-actions">
-                                <a href="#contact" class="btn-sm-line"><i class="fa-brands fa-line"></i>LINE相談</a>
+                                <a href="#contact" class="btn-sm-line">
+                                    <i class="fa-brands fa-line"></i>LINE相談
+                                </a>
+                                <button class="hamburger-btn" id="js-hamburger">
+                                    <span></span><span></span><span></span>
+                                </button>
                             </div>
                         </header>
 
+                        <section class="hero" id="hero">
+                            <div class="hero-slider">
+                                <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80');"></div>
+                                <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80');"></div>
+                                <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=80');"></div>
+                            </div>
+                            <div class="wave-top"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,32 C160,70 320,95 480,95 C640,95 800,60 960,40 C1120,20 1280,25 1440,45 L1440,0 L0,0 Z"></path></svg></div>
+                            <div class="wave-bottom"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,64 C180,35 360,20 540,35 C720,50 900,90 1080,95 C1260,100 1350,85 1440,70 L1440,120 L0,120 Z"></path></svg></div>
+                            <div class="hero-content">
+                                <div class="vertical-catch accent-box"><span>すべての人に、専属チームを。</span></div>
+                                <div class="vertical-catch main-box"><span>一人で悩むのは、もう終わりに。</span></div>
+                            </div>
+                        </section>
+
+                        <section class="section" id="about">
+                            <div class="sec-title-wrap">
+                                <span class="sec-en">About</span>
+                                <h2 class="sec-jp">RESET BASEとは</h2>
+                            </div>
+                            <p class="concept-text">
+                                トップアスリートや経営者だけのものであった「専属チーム」を、すべての人へ。<br><br>
+                                RESET BASEは、多彩なプロフェッショナルを自由に組み合わせる全く新しいサブスクリプションです。理学療法士、トレーナー、栄養士などが連携し、あなたを多角的にサポートします。
+                            </p>
+                            <span class="concept-highlight">「専属チーム」という、新しい最適解。</span>
+                        </section>
+
+                        <section class="section bg-light" id="feature">
+                            <div class="sec-title-wrap">
+                                <span class="sec-en">Features</span>
+                                <h2 class="sec-jp">特徴</h2>
+                            </div>
+                            <div class="feature-card">
+                                <img src="https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&w=600&q=80" class="feature-img" alt="">
+                                <div class="feature-body">
+                                    <div class="feature-num">01</div>
+                                    <h3 class="feature-title">ポイント制で自由にアサイン</h3>
+                                    <p class="feature-desc">毎月付与されるポイントを使って、必要な時に最適な専門家を予約。身体のケアからスキルトレーニングまで、その時の課題に合わせて自在にチームを編成できます。</p>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <img src="https://images.unsplash.com/photo-1511556820780-d912e42b4980?auto=format&fit=crop&w=600&q=80" class="feature-img" alt="">
+                                <div class="feature-body">
+                                    <div class="feature-num">02</div>
+                                    <h3 class="feature-title">余ったポイントは応援・物販へ</h3>
+                                    <p class="feature-desc">ポイントはプロ厳選のケアグッズ購入や、活動を頑張る専門家・アスリートへのギフティング（応援）にも利用可能。無駄なく価値を循環させます。</p>
+                                </div>
+                            </div>
+                        </section>
+
                         <section class="section" id="plan">
                             <div class="plan-section-title">
-                                <h2 class="plan-jp-title">ご利用料金</h2>
+                                <span class="plan-en-title">Plan</span>
+                                <h2 class="plan-jp-title">料金プラン</h2>
                             </div>
-                            <p class="plan-sub-text">整体だけじゃない、今のあなたの<br>「人生のステージ」に合わせて選べるサポート。</p>
+                            <p style="font-size: 13px; color: #666; text-align: center; margin-bottom: 32px; line-height: 1.6; font-weight: 500;">
+                                整体だけじゃない。今のあなたの<br>「人生のステージ」に合わせて選べるサポート。
+                            </p>
 
                             <div class="stage-box">
                                 <div class="stage-header">Stage 01: Maintenance</div>
@@ -307,7 +488,7 @@
                                     <div class="fl-plan-target"><i class="fa-solid fa-check"></i> 月2回の30分メンテから手軽に始めたい方へ。</div>
                                     <div class="fl-plan-footer">
                                         <button class="btn-fl-detail js-modal-open-btn"><i class="fa-solid fa-circle-info"></i> 詳細</button>
-                                        <a href="https://square.link/u/nSGGJbPy" class="btn-fl-apply" target="_blank">LINEではじめる</a>
+                                        <a href="https://square.link/u/nSGGJbPy" class="btn-fl-apply" target="_blank">申し込む</a>
                                     </div>
                                 </div>
 
@@ -320,16 +501,16 @@
                                     <div class="fl-plan-target"><i class="fa-solid fa-check"></i> 月2回の整体。まずは身体の土台を固める習慣化。</div>
                                     <div class="fl-plan-footer">
                                         <button class="btn-fl-detail js-modal-open-btn"><i class="fa-solid fa-circle-info"></i> 詳細</button>
-                                        <a href="https://square.link/u/CkJbZbMg" class="btn-fl-apply" target="_blank">LINEではじめる</a>
+                                        <a href="https://square.link/u/CkJbZbMg" class="btn-fl-apply" target="_blank">申し込む</a>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="stage-box">
-                                <div class="stage-header" style="background:var(--plan-blue);">Stage 02: Life Transform</div>
+                                <div class="stage-header" style="background: var(--plan-blue);">Stage 02: Life Transform</div>
                                 <div class="stage-desc"><i class="fa-solid fa-rocket"></i> 目標達成へ、プロが伴走する</div>
 
-                                <div class="fl-plan-card" style="border-color:var(--plan-blue); box-shadow: 4px 4px 0px var(--plan-blue);">
+                                <div class="fl-plan-card" style="border-color: var(--plan-blue); box-shadow: 4px 4px 0px var(--plan-blue);">
                                     <div class="fl-plan-badge">メインプラン！</div>
                                     <div class="fl-plan-top">
                                         <div class="fl-plan-name">プレミアム</div>
@@ -338,25 +519,25 @@
                                     <div class="fl-plan-target"><i class="fa-solid fa-check"></i> 週1回の整体。専門家単発相談を全解放。</div>
                                     <div class="fl-plan-footer">
                                         <button class="btn-fl-detail js-modal-open-btn"><i class="fa-solid fa-circle-info"></i> 詳細</button>
-                                        <a href="https://square.link/u/tQImQzYW" class="btn-fl-apply" target="_blank">LINEではじめる</a>
+                                        <a href="https://square.link/u/tQImQzYW" class="btn-fl-apply" target="_blank">申し込む</a>
                                     </div>
                                 </div>
 
                                 <div class="fl-plan-card">
                                     <div class="fl-plan-top">
-                                        <div class="fl-plan-name">エキスパート伴走</div>
+                                        <div class="fl-plan-name">エキスパート伴走プラン</div>
                                         <div class="fl-plan-price">¥33,000<span>/月(税込)</span></div>
                                     </div>
                                     <div class="fl-plan-target"><i class="fa-solid fa-check"></i> 身体の根本改善。管理栄養士らが月間サポート。</div>
                                     <div class="fl-plan-footer">
                                         <button class="btn-fl-detail js-modal-open-btn"><i class="fa-solid fa-circle-info"></i> 詳細</button>
-                                        <a href="https://square.link/u/1PTExaa2" class="btn-fl-apply" target="_blank">LINEではじめる</a>
+                                        <a href="https://square.link/u/1PTExaa2" class="btn-fl-apply" target="_blank">申し込む</a>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="stage-box">
-                                <div class="stage-header" style="background:#111;">Stage 03: Executive Support</div>
+                                <div class="stage-header" style="background: #111;">Stage 03: Executive Support</div>
                                 <div class="stage-desc"><i class="fa-solid fa-crown"></i> 究極のパーソナルケア</div>
 
                                 <div class="fl-plan-card">
@@ -367,40 +548,203 @@
                                     <div class="fl-plan-target"><i class="fa-solid fa-check"></i> 徹底的な身体改革。営業時間外もプロが対応。</div>
                                     <div class="fl-plan-footer">
                                         <button class="btn-fl-detail js-modal-open-btn"><i class="fa-solid fa-circle-info"></i> 詳細</button>
-                                        <a href="https://square.link/u/KoqDEs10" class="btn-fl-apply" target="_blank">LINEではじめる</a>
+                                        <a href="https://square.link/u/KoqDEs10" class="btn-fl-apply" target="_blank">申し込む</a>
                                     </div>
                                 </div>
 
                                 <div class="fl-plan-card">
                                     <div class="fl-plan-top">
-                                        <div class="fl-plan-name" style="font-size:15px;">プラチナ・ファミリー</div>
+                                        <div class="fl-plan-name">プラチナ・ファミリー</div>
                                         <div class="fl-plan-price">¥110,000<span>/月(税込)</span></div>
                                     </div>
                                     <div class="fl-plan-target"><i class="fa-solid fa-check"></i> 家族・社員共有。専用コンシェルジュが付きます。</div>
                                     <div class="fl-plan-footer">
                                         <button class="btn-fl-detail js-modal-open-btn"><i class="fa-solid fa-circle-info"></i> 詳細</button>
-                                        <a href="https://square.link/u/MrAgxAcG" class="btn-fl-apply" target="_blank">LINEではじめる</a>
+                                        <a href="https://square.link/u/MrAgxAcG" class="btn-fl-apply" target="_blank">申し込む</a>
                                     </div>
                                 </div>
                             </div>
 
                             <button id="js-open-compare" class="btn-compare-all">
-                                <i class="fa-solid fa-layer-group"></i> 全プランの機能比較を見る
+                                <i class="fa-solid fa-layer-group"></i> 全プランの機能一覧・比較表を見る
                             </button>
                         </section>
-
                         <section class="section bg-light" id="faq">
                             <div class="sec-title-wrap">
-                                <h2 class="sec-jp">Q&A</h2>
-                            </div>
-                            <div class="faq-item">
-                                <div class="faq-q">途中でプランの変更はできますか？</div>
-                                <div class="faq-a">はい、ライフステージの変化に合わせていつでもプラン変更が可能です。翌月からの適用となります。</div>
+                                <span class="sec-en">Faq</span>
+                                <h2 class="sec-jp">よくあるご質問</h2>
                             </div>
                             <div class="faq-item">
                                 <div class="faq-q">余ったポイントは翌月に繰り越せますか？</div>
-                                <div class="faq-a">はい、繰り越し可能です。有効期限は付与から6ヶ月間ですので、忙しい月があっても安心です。</div>
+                                <div class="faq-a">はい、繰り越し可能です。ポイントの有効期限は付与された日から6ヶ月間となりますので、ご自身のペースでご利用いただけます。</div>
                             </div>
+                            <div class="faq-item">
+                                <div class="faq-q">どんな専門家が在籍していますか？</div>
+                                <div class="faq-a">理学療法士、管理栄養士、ボイストレーナー、スポーツトレーナーなど、多様なプロフェッショナルが在籍しています。</div>
+                            </div>
+                        </section>
+
+                        <section class="section" id="access">
+                            <div class="sec-title-wrap">
+                                <span class="sec-en">Access</span>
+                                <h2 class="sec-jp">アクセス</h2>
+                            </div>
+                            <p style="font-size: 13px; color: #555; text-align: center; margin-bottom: 16px;">
+                                対面でのフィジカルケアやコンディショニングは、実店舗でもご提供しております。
+                            </p>
+                            <p style="font-size: 14px; font-weight: 700; text-align: center;">
+                                〒111-0032<br>東京都台東区浅草<br>RESET BASE 実店舗
+                            </p>
+                            <a href="https://goo.gl/maps/LPch2UsXLLVKEz978" target="_blank" class="maps-btn">Google Mapsで開く</a>
+                        </section>
+
+                        <section class="line-section" id="contact">
+                            <div class="line-wrap">
+                                <h2 class="line-title">まずは公式LINEで<br>お問い合わせ・無料相談</h2>
+                                <div class="qr-code"><img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://line.me/R/ti/p/@your_line_id_here" alt="LINE QRコード"></div>
+                                <a href="https://line.me/R/ti/p/@your_line_id_here" class="line-btn-large">LINEアプリを開く</a>
+                            </div>
+                        </section>
+
+                        <footer class="footer">
+                            <div class="footer-logo">RESET BASE</div>
+                            <div class="footer-sub">すべての人に、専属チームを。</div>
+                            <div class="footer-sns">
+                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            </div>
+                            <div class="footer-links">
+                                <a href="#">プライバシーポリシー</a>
+                                <a href="#">特定商取引法に基づく表記</a>
+                                <a href="#">利用規約</a>
+                            </div>
+                            <div class="footer-copy">©2026 RESET BASE All rights reserved.</div>
+                        </footer>
+                    </div>
+
+                    <div id="view-partner">
+                        <header class="p-header">
+                            <a href="#" id="btn-back-main" class="btn-back-main" title="戻る">
+                                <i class="fa-solid fa-angle-left"></i> もどる
+                            </a>
+                            <div class="p-header-logo">
+                                PARTNERSHIP
+                                <span>RESET BASE パートナーシップ</span>
+                            </div>
+                        </header>
+
+                        <div class="p-hero">
+                            <div class="p-hero-content">
+                                <h2>共にハッピーになる<br>パートナーを<br>募集しています</h2>
+                            </div>
+                        </div>
+
+                        <div class="p-cv-ribbon">
+                            <a href="#p-contact" class="btn-p-contact">
+                                まずは話を聞いてみたい<br>お問い合わせ
+                                <i class="fa-solid fa-angle-right" style="margin-left: 8px;"></i>
+                            </a>
+                        </div>
+
+                        <section class="p-sec">
+                            <div class="p-sec-ttl">
+                                <span class="en">ABOUT PARTNER</span>
+                                <span class="jp">パートナーシップとは</span>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80" alt="パートナーシップ" class="p-about-img">
+                            <h3 class="p-about-ttl">共に発展していく関係性を。</h3>
+                            <p class="p-about-txt">
+                                我々は各企業さまにただご支援いただく、という意識ではなく、共に発展していけるようにという考えのもと『スポンサー』ではなく『パートナー』という呼称を用いています。<br><br>
+                                皆様の目標達成、従業員様の健康課題解決のため我々がお手伝いできることはないか、一緒に考えさせていただけないでしょうか。
+                            </p>
+                        </section>
+
+                        <section class="p-sec bg-gray">
+                            <div class="p-sec-ttl">
+                                <span class="en">BENEFITS</span>
+                                <span class="jp">パートナーメリット活用事例</span>
+                            </div>
+                            <div class="p-benefit-card">
+                                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=400&q=80" class="p-benefit-img">
+                                <div class="p-benefit-body">
+                                    <span class="p-benefit-tag">福利厚生・健康経営</span>
+                                    <h4 class="p-benefit-ttl">従業員の皆様の健康サポート</h4>
+                                    <p class="p-benefit-txt">法人向けポイントを付与し、社員の皆様がご自身に合った専門家のセッションを自由に受けることができます。パフォーマンス向上 and 離職防止に繋がります。</p>
+                                </div>
+                            </div>
+                            <div class="p-benefit-card">
+                                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=400&q=80" class="p-benefit-img">
+                                <div class="p-benefit-body">
+                                    <span class="p-benefit-tag">販売促進・PR</span>
+                                    <h4 class="p-benefit-ttl">専門家プロデュースによるPR活動</h4>
+                                    <p class="p-benefit-txt">RESET BASEに在籍するプロフェッショナル（元プロアスリートや理学療法士等）とのタイアップ企画を実施し、新たな顧客層の獲得・売上アップに貢献します。</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="p-sec">
+                            <div class="p-sec-ttl">
+                                <span class="en">MENU</span>
+                                <span class="jp">パートナーシップメニュー</span>
+                            </div>
+                            <div class="p-menu-grid">
+                                <div class="p-menu-card">
+                                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=400&q=80" alt="ロゴ掲出">
+                                    <div class="p-menu-card-body">
+                                        <h3>実店舗・Webへのロゴ掲出</h3>
+                                        <p>浅草のフラッグシップ店舗および公式Webサイトにて、パートナー企業としてロゴを掲載します。健康支援企業としてのブランディングに寄与します。</p>
+                                    </div>
+                                </div>
+                                <div class="p-menu-card">
+                                    <img src="https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?auto=format&fit=crop&w=400&q=80" alt="出張セミナー">
+                                    <div class="p-menu-card-body">
+                                        <h3>出張コンディショニング・セミナー</h3>
+                                        <p>理学療法士などの専門家がオフィスに出張し、社員様の姿勢改善や疲労回復セミナーを実施します。現場のモチベーションアップに最適です。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="p-sec bg-gray">
+                            <div class="p-sec-ttl">
+                                <span class="en">DATA</span>
+                                <span class="jp">数字で見るRESET BASE</span>
+                            </div>
+                            <div class="p-data-box">
+                                <h4 style="font-size: 14px;">厳選されたプロフェッショナル</h4>
+                                <div class="p-data-num">10<span>%以下</span></div>
+                                <p class="p-data-desc">専門家（サポーター）の独自審査通過率</p>
+                            </div>
+                            <div class="p-data-box" style="background: #111;">
+                                <h4 style="font-size: 14px;">多彩なチーム編成</h4>
+                                <div class="p-data-num">15<span>ジャンル以上</span></div>
+                                <p class="p-data-desc">身体・栄養・メンタルなど多様な領域をカバー</p>
+                            </div>
+                        </section>
+
+                        <section class="p-sec">
+                            <div class="p-sec-ttl">
+                                <span class="en">PARTNERS</span>
+                                <span class="jp">オフィシャルパートナー</span>
+                            </div>
+                            <a href="https://kitchen-board.com/" target="_blank" rel="noopener" style="text-decoration: none; display: block;">
+                                <div class="p-partner-logo-item">
+                                    <img src="https://i.imgur.com/HdiIz1X.png" alt="株式会社キッチンボード">
+                                    <p class="p-partner-name">株式会社キッチンボード</p>
+                                </div>
+                            </a>
+                        </section>
+
+                        <section class="p-sec" id="p-contact" style="background: var(--primary-bg); text-align: center;">
+                            <div class="p-sec-ttl" style="margin-bottom: 24px; border: none; padding: 0;">
+                                <span class="en" style="color: #fff;">CONTACT</span>
+                                <span class="jp" style="color: #fff;">お問い合わせ</span>
+                            </div>
+                            <p style="font-size: 13px; color: rgba(255,255,255,0.9); margin-bottom: 32px;">協賛金や福利厚生プランに関するご相談は、<br>こちらよりお気軽にお問い合わせください。</p>
+                            <a href="#" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #fff; color: var(--primary-bg); font-size: 15px; font-weight: 700; padding: 18px 32px; border-radius: 8px; text-decoration: none; width: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                                パートナー窓口へ連絡する
+                            </a>
                         </section>
 
                         <footer class="footer">
@@ -416,7 +760,7 @@
     <div class="modal-overlay" id="compare-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>サブスクプラン詳細比較</h3>
+                <h3>サブスクプラン詳細比較表</h3>
                 <button class="modal-close" id="js-close-compare">&times;</button>
             </div>
             <div class="modal-body">
@@ -453,7 +797,34 @@
                                 <td>575 pt</td>
                             </tr>
                             <tr>
-                                <td>整体・ケア利用</td>
+                                <td>ポイント単価</td>
+                                <td>100円</td>
+                                <td>100円</td>
+                                <td>97.7円</td>
+                                <td>97.0円</td>
+                                <td>96.4円</td>
+                                <td>95.6円</td>
+                            </tr>
+                            <tr>
+                                <td>主な対象・利用シーン</td>
+                                <td>月2回の30分メンテ</td>
+                                <td>月2回の整体・基本習慣化</td>
+                                <td>週1回の整体・専門家相談</td>
+                                <td>身体の根本改善・伴走希望者</td>
+                                <td>徹底的な身体改革・多忙な方</td>
+                                <td>家族・社員共有・経営者向け</td>
+                            </tr>
+                            <tr>
+                                <td>特権・備考（機能解放）</td>
+                                <td>基本サービス利用可能</td>
+                                <td>継続3ヶ月で限定サプリ進呈</td>
+                                <td>専門家単発相談メニューの全解放</td>
+                                <td>月間伴走サポート（管理栄養士等）の予約権</td>
+                                <td>土日優先予約枠・営業時間外対応の権利</td>
+                                <td>ポイント譲渡・共有権、専用コンシェルジュ付帯</td>
+                            </tr>
+                            <tr>
+                                <td>整体・ボディケア利用</td>
                                 <td><span class="circle">〇</span></td>
                                 <td><span class="circle">〇</span></td>
                                 <td><span class="circle">〇</span></td>
@@ -462,7 +833,7 @@
                                 <td><span class="circle">〇</span></td>
                             </tr>
                             <tr>
-                                <td>物販購入・イベント</td>
+                                <td>イベント・ワークショップ参加</td>
                                 <td><span class="circle">〇</span></td>
                                 <td><span class="circle">〇</span></td>
                                 <td><span class="circle">〇</span></td>
@@ -471,7 +842,16 @@
                                 <td><span class="circle">〇</span></td>
                             </tr>
                             <tr>
-                                <td>3ヶ月継続特典</td>
+                                <td>物販（サプリ・ツール等）購入</td>
+                                <td><span class="circle">〇</span></td>
+                                <td><span class="circle">〇</span></td>
+                                <td><span class="circle">〇</span></td>
+                                <td><span class="circle">〇</span></td>
+                                <td><span class="circle">〇</span></td>
+                                <td><span class="circle">〇</span></td>
+                            </tr>
+                            <tr>
+                                <td>継続3ヶ月特典（ギフト進呈）</td>
                                 <td><span class="dash">-</span></td>
                                 <td><span class="circle">〇</span></td>
                                 <td><span class="circle">〇</span></td>
@@ -480,7 +860,7 @@
                                 <td><span class="circle">〇</span></td>
                             </tr>
                             <tr>
-                                <td>専門家単発相談解放</td>
+                                <td>専門家相談：単発メニュー解放</td>
                                 <td><span class="dash">-</span></td>
                                 <td><span class="dash">-</span></td>
                                 <td><span class="circle">〇</span></td>
@@ -489,7 +869,7 @@
                                 <td><span class="circle">〇</span></td>
                             </tr>
                             <tr>
-                                <td>月間伴走サポート</td>
+                                <td>専門家相談：月間伴走サポート</td>
                                 <td><span class="dash">-</span></td>
                                 <td><span class="dash">-</span></td>
                                 <td><span class="dash">-</span></td>
@@ -498,7 +878,7 @@
                                 <td><span class="circle">〇</span></td>
                             </tr>
                             <tr>
-                                <td>土日優先・時間外</td>
+                                <td>土日優先予約・営業時間外対応</td>
                                 <td><span class="dash">-</span></td>
                                 <td><span class="dash">-</span></td>
                                 <td><span class="dash">-</span></td>
@@ -507,7 +887,16 @@
                                 <td><span class="circle">〇</span></td>
                             </tr>
                             <tr>
-                                <td>家族共有・コンシェルジュ</td>
+                                <td>ポイントの譲渡・社員共有権</td>
+                                <td><span class="dash">-</span></td>
+                                <td><span class="dash">-</span></td>
+                                <td><span class="dash">-</span></td>
+                                <td><span class="dash">-</span></td>
+                                <td><span class="dash">-</span></td>
+                                <td><span class="circle">〇</span></td>
+                            </tr>
+                            <tr>
+                                <td>専用コンシェルジュ窓口</td>
                                 <td><span class="dash">-</span></td>
                                 <td><span class="dash">-</span></td>
                                 <td><span class="dash">-</span></td>
@@ -525,8 +914,154 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const phoneMockup = document.getElementById('phone-mockup-scroll');
+            const navLinks = document.querySelectorAll('.desktop-nav a.nav-link');
+            const mNavLinks = document.querySelectorAll('.m-nav-link');
             
-            // FAQの開閉
+            const viewMain = document.getElementById('view-main');
+            const viewPartner = document.getElementById('view-partner');
+            const btnShowPartner = document.getElementById('btn-show-partner');
+            const mBtnShowPartner = document.getElementById('m-btn-show-partner');
+            const btnBackMain = document.getElementById('btn-back-main');
+            const mainNavUl = document.getElementById('main-nav-ul');
+            
+            const hamburger = document.getElementById('js-hamburger');
+            const mobileMenu = document.getElementById('js-mobile-menu');
+
+            function isMobile() { return window.innerWidth <= 768; }
+
+            // ハンバーガーメニュー開閉
+            if(hamburger) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('open');
+                    mobileMenu.classList.toggle('open');
+                    if (isMobile()) {
+                        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+                    }
+                });
+            }
+
+            // スライダー処理
+            const slides = document.querySelectorAll('.hero-slider .slide');
+            let currentSlide = 0;
+            function nextSlide() {
+                if(viewMain.style.display === 'none') return; 
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
+            setInterval(nextSlide, 4000);
+
+            // PC用ホイールスクロール
+            window.addEventListener('wheel', (e) => {
+                if (isMobile()) return;
+                if (!phoneMockup.contains(e.target) && e.target !== phoneMockup) {
+                    phoneMockup.scrollTop += e.deltaY;
+                }
+            }, { passive: true });
+
+            // ナビゲーションスクロール処理
+            function navigateToSection(e, link) {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').replace('#', '');
+                
+                if (hamburger) hamburger.classList.remove('open');
+                if (mobileMenu) mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+
+                if(viewMain.style.display === 'none') {
+                    viewPartner.style.display = 'none';
+                    viewMain.style.display = 'block';
+                    mainNavUl.style.opacity = '1';
+                    btnShowPartner.classList.remove('active');
+                    void viewMain.offsetWidth; 
+                }
+
+                document.querySelector('.desktop-nav .active')?.classList.remove('active');
+                if (link.classList.contains('nav-link')) {
+                    link.parentElement.classList.add('active');
+                }
+
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    if (isMobile()) {
+                        const targetTop = targetElement.getBoundingClientRect().top + window.scrollY - 60;
+                        window.scrollTo({ top: targetTop, behavior: 'smooth' });
+                    } else {
+                        const targetTop = targetElement.offsetTop - 60;
+                        phoneMockup.scrollTo({ top: targetTop, behavior: 'smooth' });
+                    }
+                }
+            }
+
+            navLinks.forEach(link => { link.addEventListener('click', (e) => navigateToSection(e, link)); });
+            mNavLinks.forEach(link => { link.addEventListener('click', (e) => navigateToSection(e, link)); });
+
+            // スクロール時のハイライト連動
+            const scrollArea = isMobile() ? window : phoneMockup;
+            scrollArea.addEventListener('scroll', () => {
+                if(viewMain.style.display === 'none') return; 
+
+                let current = '';
+                const sections = viewMain.querySelectorAll('section');
+                const currentScroll = isMobile() ? window.scrollY : phoneMockup.scrollTop;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (currentScroll >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.parentElement.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.parentElement.classList.add('active');
+                    }
+                });
+            });
+
+            // パートナー画面への切り替え
+            function showPartnerView(e) {
+                e.preventDefault();
+                if (hamburger) hamburger.classList.remove('open');
+                if (mobileMenu) mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+
+                viewMain.style.display = 'none';
+                viewPartner.style.display = 'block';
+                
+                mainNavUl.style.opacity = '0.4';
+                document.querySelector('.desktop-nav .active')?.classList.remove('active');
+                btnShowPartner.classList.add('active');
+                
+                if (isMobile()) {
+                    window.scrollTo(0, 0);
+                } else {
+                    phoneMockup.scrollTop = 0;
+                }
+            }
+
+            btnShowPartner.addEventListener('click', showPartnerView);
+            if(mBtnShowPartner) mBtnShowPartner.addEventListener('click', showPartnerView);
+
+            // メイン画面へ戻る
+            btnBackMain.addEventListener('click', (e) => {
+                e.preventDefault();
+                viewPartner.style.display = 'none';
+                viewMain.style.display = 'block';
+                
+                mainNavUl.style.opacity = '1';
+                navLinks[0].parentElement.classList.add('active');
+                btnShowPartner.classList.remove('active');
+                
+                if (isMobile()) {
+                    window.scrollTo(0, 0);
+                } else {
+                    phoneMockup.scrollTop = 0;
+                }
+            });
+
+            // FAQのアコーディオン処理
             const faqItems = document.querySelectorAll('.faq-item');
             faqItems.forEach(item => {
                 const q = item.querySelector('.faq-q');
@@ -535,27 +1070,51 @@
                 });
             });
 
-            // モーダル制御
+            // 専門家画像アニメーション
+            const expertsGroup1 = document.querySelectorAll('.expert.group1');
+            const expertsGroup2 = document.querySelectorAll('.expert.group2');
+            let currentGroup = 1;
+            function cycleExperts() {
+                if (isMobile()) return;
+                const groupToAnimate = (currentGroup === 1) ? expertsGroup1 : expertsGroup2;
+                groupToAnimate[0].classList.add('active'); 
+                setTimeout(() => groupToAnimate[1].classList.add('active'), 600); 
+                setTimeout(() => {
+                    groupToAnimate.forEach(exp => exp.classList.add('out'));
+                    setTimeout(() => {
+                        groupToAnimate.forEach(exp => exp.classList.remove('active', 'out'));
+                        currentGroup = (currentGroup === 1) ? 2 : 1;
+                        cycleExperts(); 
+                    }, 500); 
+                }, 4000);
+            }
+            setTimeout(() => { if (!isMobile()) cycleExperts(); }, 1000); 
+            window.addEventListener('resize', () => {
+                if (isMobile()) { document.querySelectorAll('.expert').forEach(exp => exp.classList.remove('active', 'out')); }
+            });
+
+            // --- モーダル制御ロジックの追加（全詳細ボタン・一括ボタン兼用） ---
+            const modalOpenBtns = document.querySelectorAll('.js-modal-open-btn');
             const btnOpenCompare = document.getElementById('js-open-compare');
-            const detailBtns = document.querySelectorAll('.js-modal-open-btn');
             const btnCloseCompare = document.getElementById('js-close-compare');
             const compareModal = document.getElementById('compare-modal');
 
-            const openModal = (e) => {
+            const triggerModal = (e) => {
                 e.preventDefault();
                 compareModal.classList.add('show');
             };
 
-            btnOpenCompare.addEventListener('click', openModal);
-            detailBtns.forEach(btn => btn.addEventListener('click', openModal));
-
-            btnCloseCompare.addEventListener('click', () => {
-                compareModal.classList.remove('show');
-            });
-
-            compareModal.addEventListener('click', (e) => {
-                if(e.target === compareModal) compareModal.classList.remove('show');
-            });
+            if(btnOpenCompare) btnOpenCompare.addEventListener('click', triggerModal);
+            modalOpenBtns.forEach(btn => btn.addEventListener('click', triggerModal));
+            
+            if(btnCloseCompare) {
+                btnCloseCompare.addEventListener('click', () => compareModal.classList.remove('show'));
+            }
+            if(compareModal) {
+                compareModal.addEventListener('click', (e) => {
+                    if(e.target === compareModal) compareModal.classList.remove('show');
+                });
+            }
         });
     </script>
 </body>
