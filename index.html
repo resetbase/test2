@@ -7,15 +7,15 @@
     <link href="https://fonts.googleapis.com/css?display=swap&family=Lato:300,400,700,900|Open+Sans:400,600,700,800|Noto+Sans+JP:300,400,500,700,900" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
+:root {
             --font-jp: 'Noto Sans JP', sans-serif;
             --font-en: 'Lato', 'Open Sans', sans-serif;
-            --primary-bg: #2b65f1;
-            --text-dark: #333333;
+            --primary-bg: #1a202c; /* 深みのあるダークネイビー */
+            --text-dark: #111827;
             --phone-width: 440px;
             --phone-height: 85vh;
-            --plan-blue: #2b5fe8; 
-            --plan-yellow: #fcd34d; 
+            --plan-blue: #9ca3af; /* 落ち着いたシルバーグレー */
+            --plan-yellow: #d4af37; /* 高級感のあるゴールド */
             --partner-gray: #f8f9fa;
         }
 
@@ -146,30 +146,33 @@
         .bg-light { background-color: #f9fafb; }
         .sec-title-wrap { text-align: center; margin-bottom: 32px; }
         .sec-en { font-family: var(--font-en); color: #8ba5ec; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px; }
-        .sec-jp { font-size: 24px; font-weight: 700; color: var(--text-dark); line-height: 1.4; position: relative; display: inline-block; }
+.sec-jp { font-size: 24px; font-weight: 700; color: var(--text-dark); line-height: 1.4; position: relative; display: inline-block; z-index: 1; }
+        .sec-jp::after { content: ''; position: absolute; left: 0; bottom: 2px; width: 100%; height: 35%; background: linear-gradient(90deg, var(--plan-yellow) 0%, transparent 100%); z-index: -1; opacity: 0.6; }
         
         .concept-text { font-size: 14px; line-height: 1.8; color: #444; text-align: justify; margin-bottom: 24px; }
-        .concept-highlight { color: var(--primary-bg); font-weight: 700; font-size: 16px; display: block; margin: 16px 0; text-align: center;}
+        .concept-highlight { color: var(--plan-yellow); font-weight: 700; font-size: 16px; display: block; margin: 16px 0; text-align: center; background: var(--primary-bg); padding: 10px; border-radius: 4px; }
         
         .feature-card { background: #fff; border-radius: 12px; overflow: hidden; margin-bottom: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eee; }
         .feature-img { width: 100%; height: 180px; object-fit: cover; }
         .feature-body { padding: 20px; }
-        .feature-num { font-family: var(--font-en); font-size: 28px; font-weight: 900; color: var(--primary-bg); opacity: 0.3; line-height: 1; margin-bottom: -10px; }
+        .feature-num { font-family: var(--font-en); font-size: 28px; font-weight: 900; color: var(--plan-yellow); opacity: 0.5; line-height: 1; margin-bottom: -10px; }
         .feature-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--text-dark); }
         .feature-desc { font-size: 13px; line-height: 1.7; color: #555; }
 
-        /* --- 料金プラン用追加CSS（ライフステージ・フラニスタ風） --- */
+        /* --- 料金プラン用追加CSS --- */
         .plan-section-title { text-align: center; margin-bottom: 12px; }
-        .plan-jp-title { font-size: 28px; font-weight: 900; color: #111; letter-spacing: 0.05em; }
+        .plan-en-title { font-family: var(--font-en); color: var(--plan-yellow); font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px; }
+        .plan-jp-title { font-size: 28px; font-weight: 900; color: var(--text-dark); letter-spacing: 0.05em; position: relative; display: inline-block; z-index: 1; }
+        .plan-jp-title::after { content: ''; position: absolute; left: 0; bottom: 4px; width: 100%; height: 35%; background: linear-gradient(90deg, var(--plan-yellow) 0%, transparent 100%); z-index: -1; opacity: 0.6; }
         .plan-sub-text { font-size: 13px; color: #666; text-align: center; margin-bottom: 32px; line-height: 1.6; }
 
-        .stage-box { margin-bottom: 40px; text-align: left; }
+        .stage-box { margin-bottom: 40px; text-align: left; background: #fafafa; padding: 20px 15px; border-radius: 12px; border: 1px solid #eaeaea; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
         .stage-header { 
             background: #333; color: #fff; display: inline-block; padding: 6px 14px; 
             font-size: 11px; font-weight: 700; border-radius: 20px; margin-bottom: 12px; letter-spacing: 0.05em;
         }
-        .stage-desc { font-size: 15px; font-weight: 800; color: var(--plan-blue); margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
-        .stage-desc i { font-size: 16px; }
+        .stage-desc { font-size: 14px; font-weight: 800; color: #333; margin-bottom: 16px; display: flex; align-items: flex-start; gap: 6px; line-height: 1.4; }
+        .stage-desc i { font-size: 16px; color: var(--plan-yellow); margin-top: 2px; }
 
         .fl-plan-card {
             background: #fff; border: 2px solid #111; border-radius: 12px; 
@@ -485,9 +488,9 @@
                                 整体だけじゃない。今のあなたの<br>「人生のステージ」に合わせて選べるサポート。
                             </p>
 
-                            <div class="stage-box">
-                                <div class="stage-header">Stage 01: Maintenance</div>
-                                <div class="stage-desc"><i class="fa-solid fa-leaf"></i> 身体を整え、習慣を作る</div>
+<div class="stage-box">
+                                <div class="stage-header">Stage 01: メンテナンス集中</div>
+                                <div class="stage-desc"><i class="fa-solid fa-leaf"></i> 身体の土台を整え、定期的なケアを習慣化したい方向け</div>
 
                                 <div class="fl-plan-card">
                                     <div class="fl-plan-top">
@@ -516,10 +519,10 @@
                             </div>
 
                             <div class="stage-box">
-                                <div class="stage-header" style="background: var(--plan-blue);">Stage 02: Life Transform</div>
-                                <div class="stage-desc"><i class="fa-solid fa-rocket"></i> 目標達成へ、プロが伴走する</div>
+                                <div class="stage-header" style="background: var(--primary-bg); color: var(--plan-yellow);">Stage 02: プロ伴走・目標達成</div>
+                                <div class="stage-desc"><i class="fa-solid fa-rocket"></i> 痛みの改善からその先へ。本気で身体やパフォーマンスを変えたい方向け</div>
 
-                                <div class="fl-plan-card" style="border-color: var(--plan-blue); box-shadow: 4px 4px 0px var(--plan-blue);">
+                                <div class="fl-plan-card" style="border-color: var(--primary-bg); box-shadow: 4px 4px 0px var(--primary-bg);">
                                     <div class="fl-plan-badge">メインプラン！</div>
                                     <div class="fl-plan-top">
                                         <div class="fl-plan-name">プレミアム</div>
@@ -546,8 +549,8 @@
                             </div>
 
                             <div class="stage-box">
-                                <div class="stage-header" style="background: #111;">Stage 03: Executive Support</div>
-                                <div class="stage-desc"><i class="fa-solid fa-crown"></i> 究極のパーソナルケア</div>
+                                <div class="stage-header" style="background: var(--plan-yellow); color: #111;">Stage 03: 究極のパーソナルケア</div>
+                                <div class="stage-desc"><i class="fa-solid fa-crown"></i> 忙しい経営者や、ご家族・法人単位で利用したい方向け</div>
 
                                 <div class="fl-plan-card">
                                     <div class="fl-plan-top">
@@ -575,7 +578,7 @@
                             </div>
 
                             <button id="js-open-compare" class="btn-compare-all">
-                                <i class="fa-solid fa-layer-group"></i> 全プランの機能一覧・比較表を見る
+                                <i class="fa-solid fa-list"></i> 各プランの詳しい紹介を見る
                             </button>
                         </section>
                         <section class="section bg-light" id="faq">
@@ -769,157 +772,53 @@
     <div class="modal-overlay" id="compare-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>サブスクプラン詳細比較表</h3>
+<h3>各プランの詳細紹介</h3>
                 <button class="modal-close" id="js-close-compare">&times;</button>
             </div>
-            <div class="modal-body">
-                <div class="table-scroll-wrap">
-                    <table class="compare-table">
-                        <thead>
-                            <tr>
-                                <th>サービス項目 / プラン</th>
-                                <th>ライト</th>
-                                <th>スタンダード</th>
-                                <th>プレミアム</th>
-                                <th>エキスパート</th>
-                                <th>VIP</th>
-                                <th>プラチナ</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>月額料金（税込）</td>
-                                <td>6,600円</td>
-                                <td>13,200円</td>
-                                <td>22,000円</td>
-                                <td>33,000円</td>
-                                <td>55,000円</td>
-                                <td>110,000円</td>
-                            </tr>
-                            <tr>
-                                <td>付与ポイント</td>
-                                <td>30 pt</td>
-                                <td>60 pt</td>
-                                <td>115 pt</td>
-                                <td>170 pt</td>
-                                <td>285 pt</td>
-                                <td>575 pt</td>
-                            </tr>
-                            <tr>
-                                <td>ポイント単価</td>
-                                <td>100円</td>
-                                <td>100円</td>
-                                <td>97.7円</td>
-                                <td>97.0円</td>
-                                <td>96.4円</td>
-                                <td>95.6円</td>
-                            </tr>
-                            <tr>
-                                <td>主な対象・利用シーン</td>
-                                <td>月2回の30分メンテ</td>
-                                <td>月2回の整体・基本習慣化</td>
-                                <td>週1回の整体・専門家相談</td>
-                                <td>身体の根本改善・伴走希望者</td>
-                                <td>徹底的な身体改革・多忙な方</td>
-                                <td>家族・社員共有・経営者向け</td>
-                            </tr>
-                            <tr>
-                                <td>特権・備考（機能解放）</td>
-                                <td>基本サービス利用可能</td>
-                                <td>継続3ヶ月で限定サプリ進呈</td>
-                                <td>専門家単発相談メニューの全解放</td>
-                                <td>月間伴走サポート（管理栄養士等）の予約権</td>
-                                <td>土日優先予約枠・営業時間外対応の権利</td>
-                                <td>ポイント譲渡・共有権、専用コンシェルジュ付帯</td>
-                            </tr>
-                            <tr>
-                                <td>整体・ボディケア利用</td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                            </tr>
-                            <tr>
-                                <td>イベント・ワークショップ参加</td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                            </tr>
-                            <tr>
-                                <td>物販（サプリ・ツール等）購入</td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                            </tr>
-                            <tr>
-                                <td>継続3ヶ月特典（ギフト進呈）</td>
-                                <td><span class="dash">-</span></td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                            </tr>
-                            <tr>
-                                <td>専門家相談：単発メニュー解放</td>
-                                <td><span class="dash">-</span></td>
-                                <td><span class="dash">-</span></td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                            </tr>
-                            <tr>
-                                <td>専門家相談：月間伴走サポート</td>
-                                <td><span class="dash">-</span></td>
-                                <td><span class="dash">-</span></td>
-                                <td><span class="dash">-</span></td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                            </tr>
-                            <tr>
-                                <td>土日優先予約・営業時間外対応</td>
-                                <td><span class="dash">-</span></td>
-                                <td><span class="dash">-</span></td>
-                                <td><span class="dash">-</span></td>
-                                <td><span class="dash">-</span></td>
-                                <td><span class="circle">〇</span></td>
-                                <td><span class="circle">〇</span></td>
-                            </tr>
-                            <tr>
-                                <td>ポイントの譲渡・社員共有権</td>
-                                <td><span class="dash">-</span></td>
-                                <td><span class="dash">-</span></td>
-                                <td><span class="dash">-</span></td>
-                                <td><span class="dash">-</span></td>
-                                <td><span class="dash">-</span></td>
-                                <td><span class="circle">〇</span></td>
-                            </tr>
-                            <tr>
-                                <td>専用コンシェルジュ窓口</td>
-                                <td><span class="dash">-</span></td>
-                                <td><span class="dash">-</span></td>
-                                <td><span class="dash">-</span></td>
-                                <td><span class="dash">-</span></td>
-                                <td><span class="dash">-</span></td>
-                                <td><span class="circle">〇</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="modal-body" style="padding: 24px; overflow-y: auto; background: #fafafa;">
+                
+                <div style="background: #fff; border: 1px solid #eaeaea; border-radius: 8px; padding: 20px; margin-bottom: 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+                    <h4 style="font-size: 16px; border-bottom: 2px solid var(--plan-yellow); padding-bottom: 8px; margin-bottom: 16px; display: inline-block;">【Stage 01】メンテナンス集中</h4>
+                    
+                    <div style="margin-bottom: 16px;">
+                        <h5 style="font-size: 15px; font-weight: 700; color: var(--primary-bg); margin-bottom: 6px;">ライト <span style="font-size: 12px; color: #666; font-weight: normal;">(¥6,600/月)</span></h5>
+                        <p style="font-size: 13px; line-height: 1.6; color: #444;">まずは月に2回、30分の手軽な整体で身体のベースを整えます。日々の不調予防や、疲労回復を目的とする方に最適なエントリープランです。</p>
+                    </div>
+                    <div>
+                        <h5 style="font-size: 15px; font-weight: 700; color: var(--primary-bg); margin-bottom: 6px;">スタンダード <span style="font-size: 12px; color: #666; font-weight: normal;">(¥13,200/月)</span></h5>
+                        <p style="font-size: 13px; line-height: 1.6; color: #444;">月2回の本格的な整体をご提供。身体の土台をしっかりと固め、プロによる定期的なケアを習慣化したい方向けのベーシックなプランです。</p>
+                    </div>
                 </div>
+
+                <div style="background: #fff; border: 1px solid #eaeaea; border-radius: 8px; padding: 20px; margin-bottom: 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+                    <h4 style="font-size: 16px; border-bottom: 2px solid var(--plan-yellow); padding-bottom: 8px; margin-bottom: 16px; display: inline-block;">【Stage 02】プロ伴走・目標達成</h4>
+                    
+                    <div style="margin-bottom: 16px;">
+                        <h5 style="font-size: 15px; font-weight: 700; color: var(--primary-bg); margin-bottom: 6px;">プレミアム <span style="font-size: 12px; color: #666; font-weight: normal;">(¥22,000/月)</span></h5>
+                        <p style="font-size: 13px; line-height: 1.6; color: #444;">週1回の整体に加え、栄養士やトレーナーへの単発相談メニューを全解放。よりアクティブな目標に向けて、身体を変えていきたい方に最適です。</p>
+                    </div>
+                    <div>
+                        <h5 style="font-size: 15px; font-weight: 700; color: var(--primary-bg); margin-bottom: 6px;">エキスパート伴走プラン <span style="font-size: 12px; color: #666; font-weight: normal;">(¥33,000/月)</span></h5>
+                        <p style="font-size: 13px; line-height: 1.6; color: #444;">身体の根本改善を目指し、管理栄養士などの専門家が月間で密接にサポート。本気で体質改善やパフォーマンス向上を狙う方向けの充実プランです。</p>
+                    </div>
+                </div>
+
+                <div style="background: #fff; border: 1px solid #eaeaea; border-radius: 8px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+                    <h4 style="font-size: 16px; border-bottom: 2px solid var(--plan-yellow); padding-bottom: 8px; margin-bottom: 16px; display: inline-block;">【Stage 03】究極のパーソナルケア</h4>
+                    
+                    <div style="margin-bottom: 16px;">
+                        <h5 style="font-size: 15px; font-weight: 700; color: var(--primary-bg); margin-bottom: 6px;">トータルケアVIP <span style="font-size: 12px; color: #666; font-weight: normal;">(¥55,000/月)</span></h5>
+                        <p style="font-size: 13px; line-height: 1.6; color: #444;">営業時間外の対応や土日の優先予約が可能。多忙な経営者の方や、徹底的に身体を改革したい方のための至れり尽くせりなVIPプランです。</p>
+                    </div>
+                    <div>
+                        <h5 style="font-size: 15px; font-weight: 700; color: var(--primary-bg); margin-bottom: 6px;">プラチナ・ファミリー <span style="font-size: 12px; color: #666; font-weight: normal;">(¥110,000/月)</span></h5>
+                        <p style="font-size: 13px; line-height: 1.6; color: #444;">専用コンシェルジュが付き、ご家族や社員間でのポイント共有が可能。法人での福利厚生や、ご家族単位での総合的な健康管理に最適な最上位プランです。</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const phoneMockup = document.getElementById('phone-mockup-scroll');
