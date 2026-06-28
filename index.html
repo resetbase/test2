@@ -951,6 +951,43 @@
                     </div>
                 </div>
 
+    </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="matrix-modal">
+        <div class="modal-content" style="max-width: 900px;">
+            <div class="modal-header">
+                <h3>プラン比較表</h3>
+                <button class="modal-close" id="js-close-matrix">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 0; overflow-y: auto;">
+                <div class="table-scroll-wrap">
+                    <table class="compare-table">
+                        <thead>
+                            <tr>
+                                <th>サービス項目 / プラン</th>
+                                <th>ライト<br><span style="font-size:10px;font-weight:normal;">(6,600円/月)</span></th>
+                                <th>スタンダード<br><span style="font-size:10px;font-weight:normal;">(13,200円/月)</span></th>
+                                <th>プレミアム<br><span style="font-size:10px;font-weight:normal;">(22,000円/月)</span></th>
+                                <th>エキスパート伴走<br><span style="font-size:10px;font-weight:normal;">(33,000円/月)</span></th>
+                                <th>トータルケアVIP<br><span style="font-size:10px;font-weight:normal;">(55,000円/月)</span></th>
+                                <th>プラチナ・ファミリー<br><span style="font-size:10px;font-weight:normal;">(110,000円/月)</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>整体・ボディケア利用</td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td></tr>
+                            <tr><td>イベント・ワークショップ参加</td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td></tr>
+                            <tr><td>物販（サプリ・ツール等）購入</td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td></tr>
+                            <tr><td>継続3ヶ月特典（ギフト進呈）</td><td><span class="dash">-</span></td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td></tr>
+                            <tr><td>専門家相談：単発メニュー解放</td><td><span class="dash">-</span></td><td><span class="dash">-</span></td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td></tr>
+                            <tr><td>専門家相談：月間伴走サポート</td><td><span class="dash">-</span></td><td><span class="dash">-</span></td><td><span class="dash">-</span></td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td></tr>
+                            <tr><td>土日優先予約・営業時間外対応</td><td><span class="dash">-</span></td><td><span class="dash">-</span></td><td><span class="dash">-</span></td><td><span class="dash">-</span></td><td><span class="circle">〇</span></td><td><span class="circle">〇</span></td></tr>
+                            <tr><td>ポイントの譲渡・社員共有権</td><td><span class="dash">-</span></td><td><span class="dash">-</span></td><td><span class="dash">-</span></td><td><span class="dash">-</span></td><td><span class="dash">-</span></td><td><span class="circle">〇</span></td></tr>
+                            <tr><td>専用コンシェルジュ窓口</td><td><span class="dash">-</span></td><td><span class="dash">-</span></td><td><span class="dash">-</span></td><td><span class="dash">-</span></td><td><span class="dash">-</span></td><td><span class="circle">〇</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -1349,19 +1386,17 @@
                     });
                 }
 
-                // --- モーダル制御ロジック（全詳細ボタン・一括ボタン兼用） ---
+// --- モーダル制御ロジック（個別詳細ボタン用） ---
                 const modalOpenBtns = document.querySelectorAll('.js-modal-open-btn');
-                const btnOpenCompare = document.getElementById('js-open-compare');
-                const btnCloseCompare = document.getElementById('js-close-compare');
                 const compareModal = document.getElementById('compare-modal');
+                const btnCloseCompare = document.getElementById('js-close-compare');
 
-                const triggerModal = (e) => {
-                    e.preventDefault();
-                    compareModal.classList.add('show');
-                };
-
-                if(btnOpenCompare) btnOpenCompare.addEventListener('click', triggerModal);
-                modalOpenBtns.forEach(btn => btn.addEventListener('click', triggerModal));
+                modalOpenBtns.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        compareModal.classList.add('show');
+                    });
+                });
                 
                 if(btnCloseCompare) {
                     btnCloseCompare.addEventListener('click', () => compareModal.classList.remove('show'));
@@ -1369,6 +1404,27 @@
                 if(compareModal) {
                     compareModal.addEventListener('click', (e) => {
                         if(e.target === compareModal) compareModal.classList.remove('show');
+                    });
+                }
+
+                // --- モーダル制御ロジック（プラン比較表・星取表ボタン用） ---
+                const btnOpenMatrix = document.getElementById('js-open-compare');
+                const matrixModal = document.getElementById('matrix-modal');
+                const btnCloseMatrix = document.getElementById('js-close-matrix');
+
+                if(btnOpenMatrix) {
+                    btnOpenMatrix.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        matrixModal.classList.add('show');
+                    });
+                }
+                
+                if(btnCloseMatrix) {
+                    btnCloseMatrix.addEventListener('click', () => matrixModal.classList.remove('show'));
+                }
+                if(matrixModal) {
+                    matrixModal.addEventListener('click', (e) => {
+                        if(e.target === matrixModal) matrixModal.classList.remove('show');
                     });
                 }
         });
