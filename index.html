@@ -167,14 +167,23 @@
         .feature-desc { font-size: 13px; line-height: 1.7; color: #555; }
 
 /* --- カテゴリ・利用者の声用CSS --- */
-        .category-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .category-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        @media (max-width: 480px) { .category-grid { grid-template-columns: repeat(2, 1fr); } }
         .category-card {
-            background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 20px 10px;
-            text-align: center; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: transform 0.2s;
+            background: #fff; border: 2px solid #111; border-radius: 12px; padding: 16px 8px;
+            text-align: center; cursor: pointer; box-shadow: 3px 3px 0px #111; transition: transform 0.1s, box-shadow 0.1s;
         }
-        .category-card:active { transform: scale(0.98); }
-        .category-icon { font-size: 28px; color: var(--plan-yellow); margin-bottom: 8px; }
-        .category-name { font-size: 13px; font-weight: 700; color: var(--text-dark); }
+        .category-card:active { transform: translateY(2px); box-shadow: 1px 1px 0px #111; }
+        .category-icon { font-size: 24px; color: var(--plan-yellow); margin-bottom: 6px; }
+        .category-name { font-size: 12px; font-weight: 800; color: var(--text-dark); }
+        
+        /* モーダル内メニュー表用スタイル */
+        .menu-table-wrap { width: 100%; overflow-x: auto; margin-top: 10px; border: 1px solid #eaeaea; border-radius: 8px; }
+        .menu-table { width: 100%; min-width: 500px; border-collapse: collapse; font-size: 12px; text-align: left; }
+        .menu-table th, .menu-table td { padding: 10px 12px; border-bottom: 1px solid #eee; }
+        .menu-table th { background: #f8f9fa; font-weight: 700; color: #333; }
+        .menu-table td.pt-cell { font-family: var(--font-en); font-weight: 900; color: #111; text-align: right; white-space: nowrap; }
+        .menu-cat-title { font-size: 13px; font-weight: 900; color: #fff; background: var(--primary-bg); padding: 6px 12px; border-radius: 4px; margin: 16px 0 8px; }
         
         .voice-card { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eee; }
         .voice-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
@@ -517,30 +526,30 @@
                             </div>
 </section>
                         
-                        <section class="section bg-light" id="category" style="background-color: #fff;">
+<section class="section bg-light" id="category" style="background-color: #fff;">
                             <div class="sec-title-wrap">
                                 <span class="sec-en">Service</span>
                                 <h2 class="sec-jp">提供サービス</h2>
                             </div>
-                            <p style="font-size: 13px; color: #666; text-align: center; margin-bottom: 24px; line-height: 1.6;">
-                                アイコンをタップすると、<br>詳細なサポート内容をご覧いただけます。
+                            <p style="font-size: 13px; color: #666; text-align: center; margin-bottom: 24px; line-height: 1.6; font-weight: 500;">
+                                毎月付与されるポイントは、あなたの課題に合わせて<br>4つの大カテゴリ・全メニューへ自由にアサイン可能です。<br><small style="color:#888;">※各アイコンをタップすると詳細なメニュー表が開きます</small>
                             </p>
                             <div class="category-grid">
-                                <div class="category-card js-cat-modal-btn" data-target="cat-body">
-                                    <div class="category-icon"><i class="fa-solid fa-hands-holding-circle"></i></div>
-                                    <div class="category-name">整体・鍼灸</div>
+                                <div class="category-card js-cat-modal-btn" data-target="cat-shintai">
+                                    <div class="category-icon"><i class="fa-solid fa-person-running"></i></div>
+                                    <div class="category-name">身体初期化・保守</div>
                                 </div>
-                                <div class="category-card js-cat-modal-btn" data-target="cat-train">
-                                    <div class="category-icon"><i class="fa-solid fa-dumbbell"></i></div>
-                                    <div class="category-name">トレーニング</div>
-                                </div>
-                                <div class="category-card js-cat-modal-btn" data-target="cat-food">
+                                <div class="category-card js-cat-modal-btn" data-target="cat-naimen">
                                     <div class="category-icon"><i class="fa-solid fa-apple-whole"></i></div>
-                                    <div class="category-name">栄養・食事指導</div>
+                                    <div class="category-name">内面最適化・補給</div>
                                 </div>
-                                <div class="category-card js-cat-modal-btn" data-target="cat-mental">
-                                    <div class="category-icon"><i class="fa-solid fa-brain"></i></div>
-                                    <div class="category-name">メンタル・その他</div>
+                                <div class="category-card js-cat-modal-btn" data-target="cat-performance">
+                                    <div class="category-icon"><i class="fa-solid fa-chart-line"></i></div>
+                                    <div class="category-name">パフォーマンス向上</div>
+                                </div>
+                                <div class="category-card js-cat-modal-btn" data-target="cat-reset">
+                                    <div class="category-icon"><i class="fa-solid fa-campground"></i></div>
+                                    <div class="category-name">非日常・プロダクト</div>
                                 </div>
                             </div>
                         </section>
@@ -885,15 +894,13 @@
     </div>
 
 <div class="modal-overlay" id="category-modal">
-        <div class="modal-content">
+        <div class="modal-content" style="max-width: 750px;">
             <div class="modal-header">
                 <h3 id="cat-modal-title">サービス詳細</h3>
                 <button class="modal-close" id="js-close-category">&times;</button>
             </div>
-            <div class="modal-body" style="padding: 24px; overflow-y: auto; background: #fafafa;">
-                <div id="cat-content" style="background: #fff; border: 1px solid #eaeaea; border-radius: 8px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); font-size: 13px; line-height: 1.6; color: #444;">
+            <div class="modal-body" style="padding: 16px; overflow-y: auto; background: #fafafa;" id="cat-content">
                 </div>
-            </div>
         </div>
     </div>
 
