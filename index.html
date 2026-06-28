@@ -1115,12 +1115,9 @@
 
 function isMobile() { return window.innerWidth <= 768; }
 
-// --- ふわっと表示（フェードイン）処理 ---
-            // アニメーションさせたい要素のクラスをまとめて指定（B2Bパートナーページの要素も追加）
-            const fadeTargets = document.querySelectorAll('.sec-title-wrap, .concept-text, .concept-highlight, .feature-card, .category-card, .stage-box, .voice-card, .faq-item, .line-wrap, .p-sec-ttl, .p-about-img, .p-about-ttl, .p-about-txt, .p-benefit-card, .p-menu-card, .p-data-box, .p-partner-logo-item, #p-contact p, #p-contact a');
-            
-            // 最初は透明にしておくクラスを追加
-            
+// アニメーションさせたい要素のクラスをまとめて指定（新しく追加したお悩み・フローも含む）
+            const fadeTargets = document.querySelectorAll('.sec-title-wrap, .concept-text, .concept-highlight, .feature-card, .category-card, .stage-box, .voice-card, .faq-item, .line-wrap, .p-sec-ttl, .p-about-img, .p-about-ttl, .p-about-txt, .p-benefit-card, .p-menu-card, .p-data-box, .p-partner-logo-item, #p-contact p, #p-contact a, .problem-item, .flow-step');
+
             // 最初は透明にしておくクラスを追加
             fadeTargets.forEach(el => el.classList.add('fade-in-up'));
 
