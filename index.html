@@ -192,12 +192,24 @@
         .voice-info p { font-size: 11px; color: #666; }
         .voice-text { font-size: 13px; line-height: 1.6; color: #444; }
 
-        /* --- 料金プラン用追加CSS --- */
+/* --- 料金プラン用追加CSS --- */
         .plan-section-title { text-align: center; margin-bottom: 12px; }
         .plan-en-title { font-family: var(--font-en); color: var(--plan-yellow); font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px; }
         .plan-jp-title { font-size: 28px; font-weight: 900; color: var(--text-dark); letter-spacing: 0.05em; position: relative; display: inline-block; z-index: 1; }
         .plan-jp-title::after { content: ''; position: absolute; left: 0; bottom: 4px; width: 100%; height: 35%; background: linear-gradient(90deg, var(--plan-yellow) 0%, transparent 100%); z-index: -1; opacity: 0.6; }
         .plan-sub-text { font-size: 13px; color: #666; text-align: center; margin-bottom: 32px; line-height: 1.6; }
+
+        /* --- 共感・利用の流れ用追加CSS --- */
+        .problem-list { list-style: none; margin: 24px 0; }
+        .problem-item { background: #fff5f5; border-left: 4px solid #f56565; padding: 12px 16px; margin-bottom: 12px; border-radius: 0 8px 8px 0; font-size: 13px; font-weight: 700; color: #c53030; display: flex; align-items: center; gap: 10px; }
+        .flow-container { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+        .flow-step { background: #fafafa; border: 2px solid #111; border-radius: 12px; padding: 16px; box-shadow: 4px 4px 0px #111; display: flex; align-items: center; gap: 16px; position: relative; }
+        .flow-num { font-family: var(--font-en); font-size: 14px; font-weight: 900; background: var(--primary-bg); color: var(--plan-yellow); padding: 4px 10px; border-radius: 6px; text-transform: uppercase; }
+        .flow-icon { font-size: 24px; color: var(--primary-bg); width: 32px; text-align: center; }
+        .flow-text h3 { font-size: 14px; font-weight: 800; color: var(--text-dark); margin-bottom: 2px; }
+        .flow-text p { font-size: 12px; color: #666; line-height: 1.4; }
+        .flow-arrow { text-align: center; font-size: 20px; color: var(--plan-yellow); margin: 2px 0; animation: arrowBounce 2s infinite; }
+        @keyframes arrowBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
 
         .stage-box { margin-bottom: 40px; text-align: left; background: #fafafa; padding: 20px 15px; border-radius: 12px; border: 1px solid #eaeaea; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
         .stage-header { 
@@ -491,6 +503,22 @@
                             </div>
                         </section>
 
+<section class="section bg-light" id="problem">
+                            <div class="sec-title-wrap">
+                                <span class="sec-en">Problems</span>
+                                <h2 class="sec-jp">こんなお悩みありませんか？</h2>
+                            </div>
+                            <p class="concept-text" style="text-align: center; margin-bottom: 16px;">身体の不調やパフォーマンスの限界を感じつつも、どこに行けばいいか分からない…</p>
+                            <ul class="problem-list">
+                                <li class="problem-item"><i class="fa-solid fa-circle-xmark"></i> マッサージ、整体、ジム…お店が多すぎて選べない</li>
+                                <li class="problem-item"><i class="fa-solid fa-circle-xmark"></i> どこに行っても一時しのぎで、根本的に改善しない</li>
+                                <li class="problem-item"><i class="fa-solid fa-circle-xmark"></i> 自分の身体の状態を、毎回一から説明するのが面倒</li>
+                            </ul>
+                            <p class="concept-text" style="text-align: center; font-weight: 700; color: var(--primary-bg); margin-top: 20px;">
+                                そのお悩み、すべてRESET BASEの<br>「ポイント制・専属チーム」が解決します。
+                            </p>
+                        </section>
+
                         <section class="section" id="about">
                             <div class="sec-title-wrap">
                                 <span class="sec-en">About</span>
@@ -561,6 +589,57 @@
                                 <div class="category-card js-cat-modal-btn" data-target="cat-reset">
                                     <div class="category-icon"><i class="fa-solid fa-campground"></i></div>
                                     <div class="category-name">非日常・プロダクト</div>
+                                </div>
+                            </div>
+                        </section>
+
+<section class="section bg-light" id="flow">
+                            <div class="sec-title-wrap">
+                                <span class="sec-en">Flow</span>
+                                <h2 class="sec-jp">サービス開始までの流れ</h2>
+                            </div>
+                            <p style="font-size: 13px; color: #666; text-align: center; margin-bottom: 8px; line-height: 1.6; font-weight: 500;">
+                                難しい手続きは一切ありません。<br>簡単4ステップであなたのチームが結成されます。
+                            </p>
+                            
+                            <div class="flow-container">
+                                <div class="flow-step">
+                                    <div class="flow-num">Step 1</div>
+                                    <div class="flow-icon"><i class="fa-brands fa-line" style="color: #06C755; font-size: 28px;"></i></div>
+                                    <div class="flow-text">
+                                        <h3>まずはLINE相談OK</h3>
+                                        <p>些細なご質問や、プラン選びの迷いも公式LINEからお気軽にどうぞ。</p>
+                                    </div>
+                                </div>
+                                <div class="flow-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                                
+                                <div class="flow-step">
+                                    <div class="flow-num">Step 2</div>
+                                    <div class="flow-icon"><i class="fa-solid fa-mouse-pointer"></i></div>
+                                    <div class="flow-text">
+                                        <h3>プランを選んで申し込み</h3>
+                                        <p>ご自身のライフスタイルや目標に合わせて最適なプランをご契約。</p>
+                                    </div>
+                                </div>
+                                <div class="flow-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                                
+                                <div class="flow-step">
+                                    <div class="flow-num">Step 3</div>
+                                    <div class="flow-icon"><i class="fa-solid fa-id-card"></i></div>
+                                    <div class="flow-text">
+                                        <h3>マイページ発行</h3>
+                                        <p>決済完了後、ポイント管理や予約ができるあなた専用ページを発行。</p>
+                                    </div>
+                                </div>
+                                <div class="flow-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                                
+                                <div class="flow-step">
+                                    <div class="flow-num">Step 4</div>
+                                    <div class="flow-icon"><i class="fa-solid fa-users-gear"></i></div>
+                                    <div class="flow-text">
+                                        <h3>チーム結成</h3>
+                                        <p>理学療法士をはじめ、あなたに必要な専門家チームが始動します！</p>
+                                    </div>
                                 </div>
                             </div>
                         </section>
